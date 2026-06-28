@@ -5,6 +5,9 @@ import {
   createProduct,
   getProducts,
   getMyProducts,
+  getPendingProducts,
+  approveProduct,
+  rejectProduct,
   updateProduct,
   deleteProduct,
 } from "../controllers/productController.js";
@@ -17,7 +20,7 @@ router.post(
   createProduct
 );
 
-// All Products
+// All Products (Only Approved)
 router.get(
   "/",
   getProducts
@@ -28,6 +31,27 @@ router.get(
   "/my-products",
   authMiddleware,
   getMyProducts
+);
+
+// Get Pending Products (Admin Only)
+router.get(
+  "/pending",
+  authMiddleware,
+  getPendingProducts
+);
+
+// Approve Product (Admin Only)
+router.put(
+  "/:id/approve",
+  authMiddleware,
+  approveProduct
+);
+
+// Reject Product (Admin Only)
+router.put(
+  "/:id/reject",
+  authMiddleware,
+  rejectProduct
 );
 
 // Update Product

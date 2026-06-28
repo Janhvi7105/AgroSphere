@@ -1,70 +1,371 @@
-# Getting Started with Create React App
+# 🌾 AgroSphere – Smart Agriculture Marketplace Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+AgroSphere is a full-stack MERN (MongoDB, Express.js, React.js, Node.js) web application designed to connect farmers and buyers through a secure digital marketplace. It enables farmers to list agricultural products, buyers to purchase them using Razorpay, and administrators to manage the platform efficiently through an approval workflow.
 
-## Available Scripts
+Built as a final-year project, AgroSphere focuses on digitizing agricultural commerce with features such as product approval, crop guidance, weather updates, AI assistance, community interaction, and order management.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 👨‍🌾 Farmer Module
+- User Registration & Login
+- JWT Authentication
+- Farmer Dashboard
+- Add / Edit / Delete Products
+- Product Status Tracking (Pending / Approved / Rejected)
+- My Products
+- Order Management
+- Profile Management
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🛒 Marketplace
+- Browse Approved Products
+- Product Details Page
+- Search Products
+- Category Filter
+- Price Sorting
+- Quantity Selection
+- Real-time Stock Management
 
-### `npm test`
+### 💳 Payment & Orders
+- Razorpay Payment Gateway Integration
+- Secure Order Placement
+- Purchase History
+- Delivery Address
+- Payment Status
+- Order Status Tracking
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 👨‍💼 Admin Module
+- Admin Dashboard
+- User Management
+- Product Approval Workflow
+- Pending Products Management
+- Crop Guide Management
+- Government Schemes Management
+- Community Post Management
+- Order Analytics
+- Revenue Dashboard
 
-### `npm run build`
+### 🌾 Crop Guide
+- Crops
+- Vegetables
+- Fruits
+- Flowers
+- Soil Information
+- Fertilizer Recommendations
+- Disease Identification
+- Treatment Suggestions
+- Seed Price Information
+- Video Tutorials
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🌦 Weather Module
+- Live Weather Information
+- Location-based Forecast
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🏛 Government Schemes
+- Agricultural Scheme Listings
+- Eligibility Information
+- Benefits
+- Official Resources
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 👥 Community Module
+- Create Posts
+- Share Farming Knowledge
+- Community Feed
 
-### `npm run eject`
+### ⭐ Reviews & Ratings
+- Product Reviews
+- Product Ratings
+- Average Rating Display
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🤖 AI Assistant
+- Gemini AI Integration
+- Agriculture-related Query Assistance
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# 🏗️ System Architecture
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+                Admin
+                  │
+ ┌────────────────────────────────────┐
+ │ Dashboard                          │
+ │ Users                              │
+ │ Products                           │
+ │ Pending Approvals                  │
+ │ Orders                             │
+ │ Crop Guide                         │
+ │ Government Schemes                 │
+ └────────────────────────────────────┘
+                  │
+           MongoDB Database
+                  │
+ ┌────────────────────────────────────┐
+ │ Users                              │
+ │ Products                           │
+ │ Orders                             │
+ │ Crops                              │
+ │ Government Schemes                 │
+ │ Community Posts                    │
+ │ Reviews                            │
+ └────────────────────────────────────┘
+                  │
+         React Frontend (Farmer)
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 🛠️ Tech Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Frontend
 
-### Code Splitting
+- React.js
+- React Router DOM
+- Axios
+- CSS
+- JavaScript (ES6)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Backend
 
-### Analyzing the Bundle Size
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Authentication
 
-### Making a Progressive Web App
+- JWT
+- bcryptjs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Payment Gateway
 
-### Advanced Configuration
+- Razorpay
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### AI
 
-### Deployment
+- Google Gemini API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### APIs
 
-### `npm run build` fails to minify
+- OpenWeather API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+# 📂 Project Structure
+
+```
+AgroSphere/
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── server.js
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.js
+│   │   ├── index.js
+│
+├── package.json
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/AgroSphere.git
+
+cd AgroSphere
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+
+npm install
+
+npm start
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm start
+```
+
+---
+
+# 🔐 Environment Variables
+
+Create a `.env` file inside the backend folder.
+
+```env
+PORT=5000
+
+MONGO_URI=your_mongodb_connection
+
+JWT_SECRET=your_secret_key
+
+RAZORPAY_KEY_ID=your_key
+
+RAZORPAY_SECRET=your_secret
+
+GEMINI_API_KEY=your_api_key
+```
+
+---
+
+# 👨‍💻 User Roles
+
+## Farmer
+
+- Register/Login
+- Manage Products
+- View Orders
+- Track Product Status
+- Update Profile
+
+---
+
+## Buyer
+
+- Browse Marketplace
+- Purchase Products
+- Razorpay Payment
+- View Purchase History
+- Rate & Review Products
+
+---
+
+## Admin
+
+- Manage Users
+- Approve Products
+- Manage Orders
+- Manage Crop Guide
+- Manage Government Schemes
+- Platform Analytics
+
+---
+
+# 🔄 Application Workflow
+
+```
+Farmer
+   │
+Upload Product
+   │
+Pending Approval
+   │
+Admin Approves
+   │
+Marketplace
+   │
+Buyer Purchases Product
+   │
+Razorpay Payment
+   │
+Order Created
+   │
+Stock Updated
+   │
+Purchase History
+   │
+Review Product
+```
+
+---
+
+# 📸 Screenshots
+
+Add screenshots here after deployment.
+
+Example:
+
+```
+Home Page
+
+Marketplace
+
+Farmer Dashboard
+
+Admin Dashboard
+
+Crop Guide
+
+Product Details
+
+Payment Page
+
+Order Dashboard
+```
+
+---
+
+# 🔒 Security Features
+
+- JWT Authentication
+- Protected Routes
+- Role-based Authorization
+- Password Hashing using bcrypt
+- Secure REST APIs
+
+---
+
+# 📈 Future Enhancements
+
+- AI Voice Assistant
+- Product Recommendations
+- Push Notifications
+- Mobile Application
+- Multi-language Support
+- Inventory Analytics
+
+---
+
+# 🎯 Learning Outcomes
+
+- MERN Stack Development
+- REST API Design
+- MongoDB Database Modeling
+- JWT Authentication
+- Payment Gateway Integration
+- Admin Approval Workflow
+- Full Stack Deployment
+- Responsive UI Design
+
+---
+
+# 👩‍💻 Developed By
+
+**Janhvi**
+
+B.Tech Student
+
+Department of Computer Science & Engineering
+
+---
+
+# ⭐ If you found this project helpful
+
+Please consider giving it a ⭐ on GitHub.

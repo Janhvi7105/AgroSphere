@@ -9,6 +9,12 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [orderStats, setOrderStats] = useState({
+    totalOrders: 0,
+    revenue: 0,
+    pendingOrders: 0,
+    deliveredOrders: 0,
+  });
 
   const fetchData = async () => {
     try {
@@ -32,8 +38,21 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchOrderStats = async () => {
+    try {
+      const { data } = await axios.get(
+        "http://localhost:5000/api/admin/orders/stats"
+      );
+
+      setOrderStats(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchData();
+    fetchOrderStats();
   }, []);
 
   const cardStyle = {
@@ -150,6 +169,103 @@ const AdminDashboard = () => {
 
             <p>View Community Posts</p>
           </div>
+
+          {/* Orders Card */}
+          <div
+            style={{
+              ...cardStyle,
+              background: "#8B5CF6",
+            }}
+            onClick={() =>
+              navigate("/admin-orders")
+            }
+          >
+            <h2>📦 Orders</h2>
+
+            <h1
+              style={{
+                fontSize: "48px",
+              }}
+            >
+              {orderStats.totalOrders}
+            </h1>
+
+            <p>Total Orders</p>
+          </div>
+        </div>
+
+        {/* Order Analytics Cards */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(280px,1fr))",
+            gap: "25px",
+            marginTop: "25px",
+          }}
+        >
+          {/* Revenue Card */}
+          <div
+            style={{
+              ...cardStyle,
+              background: "#059669",
+              cursor: "default",
+            }}
+          >
+            <h2>💰 Revenue</h2>
+
+            <h1
+              style={{
+                fontSize: "48px",
+              }}
+            >
+              ₹{orderStats.revenue}
+            </h1>
+
+            <p>Total Revenue</p>
+          </div>
+
+          {/* Pending Orders Card */}
+          <div
+            style={{
+              ...cardStyle,
+              background: "#D97706",
+              cursor: "default",
+            }}
+          >
+            <h2>🟡 Pending</h2>
+
+            <h1
+              style={{
+                fontSize: "48px",
+              }}
+            >
+              {orderStats.pendingOrders}
+            </h1>
+
+            <p>Pending Orders</p>
+          </div>
+
+          {/* Delivered Orders Card */}
+          <div
+            style={{
+              ...cardStyle,
+              background: "#059669",
+              cursor: "default",
+            }}
+          >
+            <h2>✅ Delivered</h2>
+
+            <h1
+              style={{
+                fontSize: "48px",
+              }}
+            >
+              {orderStats.deliveredOrders}
+            </h1>
+
+            <p>Delivered Orders</p>
+          </div>
         </div>
 
         {/* Quick Summary */}
@@ -178,6 +294,16 @@ const AdminDashboard = () => {
           <p>
             👨‍🌾 Community Posts:
             <strong> {posts.length}</strong>
+          </p>
+
+          <p>
+            📦 Total Orders:
+            <strong> {orderStats.totalOrders}</strong>
+          </p>
+
+          <p>
+            💰 Total Revenue:
+            <strong> ₹{orderStats.revenue}</strong>
           </p>
         </div>
       </div>

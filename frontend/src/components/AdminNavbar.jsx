@@ -21,6 +21,7 @@ const AdminNavbar = () => {
     borderRadius: "8px",
     cursor: "pointer",
     fontWeight: "bold",
+    transition: "0.3s",
   };
 
   return (
@@ -33,45 +34,81 @@ const AdminNavbar = () => {
         justifyContent: "space-between",
         alignItems: "center",
         boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
       }}
     >
-      <h2 style={{ margin: 0 }}>
+      {/* Logo */}
+      <h2
+        style={{
+          margin: 0,
+          cursor: "pointer",
+        }}
+        onClick={() => navigate("/admin-dashboard")}
+      >
         🌾 AgroSphere Admin
       </h2>
 
-      <div>
+      {/* Navigation */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <button
           style={btnStyle}
-          onClick={() =>
-            navigate("/admin-dashboard")
-          }
+          onClick={() => navigate("/admin-dashboard")}
         >
           Dashboard
         </button>
 
         <button
           style={btnStyle}
-          onClick={() =>
-            navigate("/admin-users")
-          }
+          onClick={() => navigate("/admin-users")}
         >
           Users
         </button>
 
         <button
           style={btnStyle}
-          onClick={() =>
-            navigate("/admin-products")
-          }
+          onClick={() => navigate("/admin-products")}
         >
           Products
         </button>
 
         <button
           style={btnStyle}
-          onClick={() =>
-            navigate("/admin-posts")
-          }
+          onClick={() => navigate("/admin-pending-products")}
+        >
+          Pending Products
+        </button>
+
+        <button
+          style={btnStyle}
+          onClick={() => navigate("/admin-orders")}
+        >
+          Orders
+        </button>
+
+        <button
+          style={btnStyle}
+          onClick={() => navigate("/admin-crop-guide")}
+        >
+          Crop Guide
+        </button>
+
+        <button
+          style={btnStyle}
+          onClick={() => navigate("/admin-schemes")}
+        >
+          Govt Schemes
+        </button>
+
+        <button
+          style={btnStyle}
+          onClick={() => navigate("/admin-posts")}
         >
           Posts
         </button>

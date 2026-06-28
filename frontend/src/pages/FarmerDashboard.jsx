@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import FarmerNavbar from "../components/FarmerNavbar";
+import VoiceAssistant from "../components/VoiceAssistant";
 
 const FarmerDashboard = () => {
   const navigate = useNavigate();
@@ -19,12 +20,12 @@ const FarmerDashboard = () => {
       <div
         style={{
           background: "#0b5d1e",
-          height: "250px",
+          minHeight: "320px",
           color: "white",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "0 60px",
+          padding: "50px 70px",
         }}
       >
         <h1
@@ -71,7 +72,9 @@ const FarmerDashboard = () => {
       {/* Dashboard Content */}
       <div
         style={{
-          padding: "40px",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "40px 30px 60px",
         }}
       >
         <h2>📊 Dashboard Overview</h2>
@@ -93,17 +96,45 @@ const FarmerDashboard = () => {
             style={{
               background: "white",
               padding: "25px",
-              borderRadius: "12px",
-              boxShadow:
-                "0 2px 10px rgba(0,0,0,0.1)",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+              border: "1px solid #edf2f7",
               cursor: "pointer",
+              transition: "0.3s",
+              minHeight: "170px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
             <h3>📦 My Products</h3>
             <h1>12</h1>
           </div>
 
-          {/* Purchase */}
+          {/* My Orders */}
+          <div
+            onClick={() =>
+              navigate("/my-orders")
+            }
+            style={{
+              background: "white",
+              padding: "25px",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+              border: "1px solid #edf2f7",
+              cursor: "pointer",
+              transition: "0.3s",
+              minHeight: "170px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <h3>📋 My Orders</h3>
+            <h1>Orders</h1>
+          </div>
+
+          {/* Marketplace */}
           <div
             onClick={() =>
               navigate("/marketplace")
@@ -111,14 +142,19 @@ const FarmerDashboard = () => {
             style={{
               background: "white",
               padding: "25px",
-              borderRadius: "12px",
-              boxShadow:
-                "0 2px 10px rgba(0,0,0,0.1)",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+              border: "1px solid #edf2f7",
               cursor: "pointer",
+              transition: "0.3s",
+              minHeight: "170px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
-            <h3>🛒 Purchase</h3>
-            <h1>Buy</h1>
+            <h3>🛒 Marketplace</h3>
+            <h1>Browse</h1>
           </div>
 
           {/* Community */}
@@ -129,10 +165,15 @@ const FarmerDashboard = () => {
             style={{
               background: "white",
               padding: "25px",
-              borderRadius: "12px",
-              boxShadow:
-                "0 2px 10px rgba(0,0,0,0.1)",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+              border: "1px solid #edf2f7",
               cursor: "pointer",
+              transition: "0.3s",
+              minHeight: "170px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
             <h3>👨‍🌾 Community Posts</h3>
@@ -147,92 +188,163 @@ const FarmerDashboard = () => {
             style={{
               background: "white",
               padding: "25px",
-              borderRadius: "12px",
-              boxShadow:
-                "0 2px 10px rgba(0,0,0,0.1)",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+              border: "1px solid #edf2f7",
               cursor: "pointer",
+              transition: "0.3s",
+              minHeight: "170px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
             <h3>🌤 Weather</h3>
             <h1>Check</h1>
-          </div>
-
-          {/* Marketplace */}
-          <div
-            onClick={() =>
-              navigate("/marketplace")
-            }
-            style={{
-              background: "white",
-              padding: "25px",
-              borderRadius: "12px",
-              boxShadow:
-                "0 2px 10px rgba(0,0,0,0.1)",
-              cursor: "pointer",
-            }}
-          >
-            <h3>🛍 Marketplace</h3>
-            <h1>Browse</h1>
           </div>
         </div>
 
         {/* Quick Actions */}
         <div
           style={{
-            marginTop: "40px",
-            background: "white",
-            padding: "30px",
-            borderRadius: "12px",
+            marginTop: "45px",
+            background: "#ffffff",
+            padding: "35px",
+            borderRadius: "20px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            border: "1px solid #edf2f7",
           }}
         >
           <h2>⚡ Quick Actions</h2>
 
-          <button
-            onClick={() =>
-              navigate("/marketplace")
-            }
+          <div
             style={{
-              marginRight: "10px",
-              padding: "12px 25px",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "15px",
+              marginTop: "25px",
             }}
           >
-            🛒 Purchase
-          </button>
+            <button
+              onClick={() =>
+                navigate("/marketplace")
+              }
+              style={{
+                padding: "14px 24px",
+                borderRadius: "10px",
+                background: "#14532d",
+                color: "white",
+                border: "none",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
+            >
+              🛒 Marketplace
+            </button>
 
-          <button
-            onClick={() =>
-              navigate("/community")
-            }
-            style={{
-              marginRight: "10px",
-              padding: "12px 25px",
-            }}
-          >
-            👨‍🌾 Community Posts
-          </button>
+            <button
+              onClick={() =>
+                navigate("/add-product")
+              }
+              style={{
+                padding: "14px 24px",
+                borderRadius: "10px",
+                background: "#f59e0b",
+                color: "white",
+                border: "none",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
+            >
+              🌾 Sell Product
+            </button>
 
-          <button
-            onClick={() =>
-              navigate("/marketplace")
-            }
-            style={{
-              marginRight: "10px",
-              padding: "12px 25px",
-            }}
-          >
-            🛍 Marketplace
-          </button>
+            <button
+              onClick={() =>
+                navigate("/my-products")
+              }
+              style={{
+                padding: "14px 24px",
+                borderRadius: "10px",
+                background: "#14532d",
+                color: "white",
+                border: "none",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
+            >
+              📦 My Products
+            </button>
 
-          <button
-            onClick={() =>
-              navigate("/profile")
-            }
+            <button
+              onClick={() =>
+                navigate("/my-orders")
+              }
+              style={{
+                padding: "14px 24px",
+                borderRadius: "10px",
+                background: "#f59e0b",
+                color: "white",
+                border: "none",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
+            >
+              📋 My Orders
+            </button>
+
+            <button
+              onClick={() =>
+                navigate("/profile")
+              }
+              style={{
+                padding: "14px 24px",
+                borderRadius: "10px",
+                background: "#14532d",
+                color: "white",
+                border: "none",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
+            >
+              👤 Profile
+            </button>
+          </div>
+        </div>
+
+        {/* AI Assistant */}
+        <div
+          style={{
+            marginTop: "50px",
+            background: "#ffffff",
+            borderRadius: "20px",
+            padding: "35px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+            border: "1px solid #e5e7eb",
+          }}
+        >
+          <h2
             style={{
-              padding: "12px 25px",
+              margin: 0,
+              color: "#14532d",
+              fontSize: "32px",
             }}
           >
-            👤 Profile
-          </button>
+            🤖 AgroSphere AI Assistant
+          </h2>
+
+          <p
+            style={{
+              color: "#6b7280",
+              marginTop: "10px",
+              marginBottom: "30px",
+              fontSize: "16px",
+            }}
+          >
+            Ask farming questions using voice or text and get AI-powered guidance instantly.
+          </p>
+
+          <VoiceAssistant />
         </div>
       </div>
     </div>

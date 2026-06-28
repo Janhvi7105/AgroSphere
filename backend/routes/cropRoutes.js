@@ -1,21 +1,52 @@
 import express from "express";
-import Crop from "../models/Crop.js";
+
+import {
+  getAllCrops,
+  getCropByName,
+  getCropsByCategory,
+  createCrop,
+  updateCrop,
+  deleteCrop,
+} from "../controllers/cropController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// Get all crops
-router.get("/", async (req, res) => {
-  const crops = await Crop.find();
-  res.json(crops);
-});
+// =============================
+// GET ALL CROPS
+// =============================
+router.get("/", getAllCrops);
 
-// Get crop by name
-router.get("/:name", async (req, res) => {
-  const crop = await Crop.findOne({
-    name: req.params.name,
-  });
+// =============================
+// GET CROPS BY CATEGORY
+// Example:
+// /api/crops/category/Vegetable
+// =============================
+router.get("/category/:category", getCropsByCategory);
 
-  res.json(crop);
-});
+// =============================
+// GET CROP BY NAME
+// Example:
+// /api/crops/Rice
+// =============================
+router.get("/:name", getCropByName);
+
+// =============================
+// CREATE NEW CROP
+// (Admin Only)
+// =============================
+router.post("/", authMiddleware, createCrop);
+
+// =============================
+// UPDATE CROP
+// (Admin Only)
+// =============================
+router.put("/:id", authMiddleware, updateCrop);
+
+// =============================
+// DELETE CROP
+// (Admin Only)
+// =============================
+router.delete("/:id", authMiddleware, deleteCrop);
 
 export default router;

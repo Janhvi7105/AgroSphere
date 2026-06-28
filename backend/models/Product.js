@@ -42,6 +42,22 @@ const productSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+
+    status: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "pending",
+    },
+
+    averageRating: {
+      type: Number,
+      default: 0,
+    },
+
+    numberOfReviews: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

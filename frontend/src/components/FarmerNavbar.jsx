@@ -89,25 +89,25 @@ const FarmerNavbar = () => {
             navigate("/marketplace")
           }
         >
-          Purchase
-        </button>
-
-        <button
-          style={navBtn}
-          onClick={() =>
-            navigate("/add-product")
-          }
-        >
-          Add Product
-        </button>
-
-        <button
-          style={navBtn}
-          onClick={() =>
-            navigate("/marketplace")
-          }
-        >
           Marketplace
+        </button>
+
+        <button
+          style={navBtn}
+          onClick={() =>
+            navigate("/my-purchases")
+          }
+        >
+          My Purchases
+        </button>
+
+        <button
+          style={navBtn}
+          onClick={() =>
+            navigate("/my-orders")
+          }
+        >
+          My Orders
         </button>
 
         <button
