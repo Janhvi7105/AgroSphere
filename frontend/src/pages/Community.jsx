@@ -74,7 +74,7 @@ const Community = () => {
   return (
     <div
       style={{
-        background: "#f4f7fb",
+        background: "#f0f3f0",
         minHeight: "100vh",
       }}
     >
@@ -84,7 +84,7 @@ const Community = () => {
       {/* Page Content */}
       <div
         style={{
-          maxWidth: "900px",
+          maxWidth: "1000px",
           margin: "40px auto",
           padding: "0 30px",
         }}
@@ -92,32 +92,48 @@ const Community = () => {
         <div
           style={{
             background: "#fff",
-            padding: "35px",
+            padding: "40px",
             borderRadius: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-            border: "1px solid #e5e7eb",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+            border: "1px solid #e8ece8",
           }}
         >
           <div
             style={{
-              marginBottom: "30px",
-              borderBottom: "2px solid #e5e7eb",
-              paddingBottom: "20px",
+              marginBottom: "35px",
+              borderBottom: "2px solid #e8ece8",
+              paddingBottom: "25px",
             }}
           >
             <h1
               style={{
-                fontSize: "36px",
+                fontSize: "34px",
                 color: "#14532d",
-                marginBottom: "10px",
+                marginBottom: "8px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
               }}
             >
-              👨‍🌾 Community Feed
+              <span style={{ fontSize: "38px" }}>👨‍🌾</span>
+              Community Feed
+              <span style={{
+                fontSize: "14px",
+                background: "#f3f4f6",
+                color: "#6b7280",
+                padding: "4px 14px",
+                borderRadius: "20px",
+                fontWeight: "500",
+                marginLeft: "8px"
+              }}>
+                {posts.length} posts
+              </span>
             </h1>
             <p
               style={{
                 color: "#6b7280",
                 fontSize: "16px",
+                margin: 0
               }}
             >
               Connect with fellow farmers, share experiences, and learn from the community.
@@ -127,20 +143,24 @@ const Community = () => {
           {/* Create Post Section */}
           <div
             style={{
-              background: "#f9fafb",
-              padding: "25px",
-              borderRadius: "15px",
-              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #f9fafb, #f3f4f6)",
+              padding: "28px",
+              borderRadius: "16px",
+              border: "2px solid #e8ece8",
+              marginBottom: "10px"
             }}
           >
             <h3
               style={{
                 color: "#14532d",
-                marginBottom: "15px",
+                marginBottom: "18px",
                 fontSize: "20px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px"
               }}
             >
-              📝 Share Your Story
+              <span>📝</span> Share Your Story
             </h3>
 
             <form onSubmit={createPost}>
@@ -153,39 +173,41 @@ const Community = () => {
                 }
                 style={{
                   width: "100%",
-                  padding: "15px",
+                  padding: "16px",
                   borderRadius: "12px",
                   border: "2px solid #d1d5db",
                   fontSize: "16px",
                   outline: "none",
                   resize: "vertical",
-                  transition: "border-color 0.3s",
+                  transition: "all 0.3s ease",
                   fontFamily: "inherit",
                   backgroundColor: "#fff",
+                  minHeight: "120px"
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = "#14532d";
+                  e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "#d1d5db";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               />
-
-              <br />
-              <br />
 
               <div
                 style={{
                   display: "flex",
-                  gap: "15px",
+                  gap: "12px",
+                  marginTop: "18px",
+                  flexWrap: "wrap"
                 }}
               >
                 <button
                   type="submit"
                   disabled={submitting}
                   style={{
-                    padding: "14px 35px",
-                    background: submitting ? "#6b7280" : "#14532d",
+                    padding: "14px 36px",
+                    background: submitting ? "#9ca3af" : "linear-gradient(135deg, #14532d, #1a6b1a)",
                     color: "white",
                     border: "none",
                     borderRadius: "10px",
@@ -193,17 +215,22 @@ const Community = () => {
                     fontWeight: "600",
                     fontSize: "16px",
                     transition: "all 0.3s ease",
+                    boxShadow: submitting ? "none" : "0 4px 12px rgba(20, 83, 45, 0.3)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    opacity: submitting ? 0.7 : 1
                   }}
                   onMouseEnter={(e) => {
                     if (!submitting) {
-                      e.currentTarget.style.background = "#0b5d1e";
-                      e.currentTarget.style.transform = "scale(1.02)";
+                      e.currentTarget.style.transform = "translateY(-3px)";
+                      e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!submitting) {
-                      e.currentTarget.style.background = "#14532d";
-                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
                     }
                   }}
                 >
@@ -214,8 +241,8 @@ const Community = () => {
                   type="button"
                   onClick={() => setContent("")}
                   style={{
-                    padding: "14px 25px",
-                    background: "#e5e7eb",
+                    padding: "14px 28px",
+                    background: "#f3f4f6",
                     color: "#1f2937",
                     border: "none",
                     borderRadius: "10px",
@@ -223,12 +250,17 @@ const Community = () => {
                     fontWeight: "600",
                     fontSize: "16px",
                     transition: "all 0.3s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#d1d5db";
+                    e.currentTarget.style.background = "#e5e7eb";
+                    e.currentTarget.style.transform = "scale(1.02)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#e5e7eb";
+                    e.currentTarget.style.background = "#f3f4f6";
+                    e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
                   🗑 Clear
@@ -237,7 +269,7 @@ const Community = () => {
             </form>
           </div>
 
-          <hr style={{ margin: "35px 0", border: "1px solid #e5e7eb" }} />
+          <hr style={{ margin: "40px 0", border: "1px solid #e8ece8" }} />
 
           {/* Recent Posts Section */}
           <div>
@@ -246,7 +278,7 @@ const Community = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginBottom: "20px",
+                marginBottom: "24px",
               }}
             >
               <h2
@@ -254,14 +286,21 @@ const Community = () => {
                   color: "#14532d",
                   fontSize: "24px",
                   margin: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px"
                 }}
               >
-                📋 Recent Posts
+                <span>📋</span> Recent Posts
               </h2>
               <span
                 style={{
                   color: "#6b7280",
                   fontSize: "14px",
+                  background: "#f3f4f6",
+                  padding: "4px 14px",
+                  borderRadius: "20px",
+                  fontWeight: "500"
                 }}
               >
                 {posts.length} {posts.length === 1 ? "post" : "posts"}
@@ -272,124 +311,218 @@ const Community = () => {
               <div
                 style={{
                   textAlign: "center",
-                  padding: "40px",
-                  color: "#6b7280",
+                  padding: "60px 20px",
+                  background: "#f9fafb",
+                  borderRadius: "16px",
                 }}
               >
-                <div style={{ fontSize: "40px", marginBottom: "10px" }}>⏳</div>
-                <p>Loading posts...</p>
+                <div style={{
+                  width: "50px",
+                  height: "50px",
+                  border: "6px solid #f3f3f3",
+                  borderTop: "6px solid #14532d",
+                  borderRadius: "50%",
+                  animation: "spin 1s linear infinite",
+                  margin: "0 auto 20px"
+                }}></div>
+                <p style={{ color: "#6b7280", fontSize: "16px", margin: 0 }}>Loading posts...</p>
+                <style>
+                  {`
+                    @keyframes spin {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                  `}
+                </style>
               </div>
             ) : posts.length === 0 ? (
               <div
                 style={{
                   textAlign: "center",
-                  padding: "60px 20px",
-                  background: "#f9fafb",
-                  borderRadius: "15px",
+                  padding: "80px 20px",
+                  background: "linear-gradient(135deg, #f9fafb, #f3f4f6)",
+                  borderRadius: "16px",
                   border: "2px dashed #d1d5db",
                 }}
               >
-                <div style={{ fontSize: "64px", marginBottom: "15px" }}>🌱</div>
-                <h3 style={{ color: "#1f2937", marginBottom: "10px" }}>
+                <div style={{ fontSize: "72px", marginBottom: "15px" }}>🌱</div>
+                <h3 style={{ color: "#1f2937", marginBottom: "10px", fontSize: "24px" }}>
                   No posts yet
                 </h3>
-                <p style={{ color: "#6b7280", fontSize: "16px" }}>
+                <p style={{ color: "#6b7280", fontSize: "16px", margin: 0 }}>
                   Be the first to share your farming story with the community!
                 </p>
               </div>
             ) : (
-              posts.map((post) => (
-                <div
-                  key={post._id}
-                  style={{
-                    background: "#fff",
-                    padding: "25px",
-                    marginTop: "20px",
-                    borderRadius: "15px",
-                    border: "1px solid #e5e7eb",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-                    transition: "0.3s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.1)";
-                    e.currentTarget.style.transform = "translateY(-2px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
-                    e.currentTarget.style.transform = "translateY(0px)";
-                  }}
-                >
+              <div style={{
+                display: "grid",
+                gap: "20px"
+              }}>
+                {posts.map((post) => (
                   <div
+                    key={post._id}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "15px",
+                      background: "#fff",
+                      padding: "28px",
+                      borderRadius: "16px",
+                      border: "1px solid #e8ece8",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.1)";
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                      e.currentTarget.style.borderColor = "#14532d";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.borderColor = "#e8ece8";
                     }}
                   >
                     <div
                       style={{
-                        width: "48px",
-                        height: "48px",
-                        borderRadius: "50%",
-                        background: "#14532d",
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "24px",
-                        marginRight: "15px",
+                        marginBottom: "16px",
                       }}
                     >
-                      👨‍🌾
+                      <div
+                        style={{
+                          width: "52px",
+                          height: "52px",
+                          borderRadius: "50%",
+                          background: "linear-gradient(135deg, #14532d, #1a6b1a)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "26px",
+                          marginRight: "16px",
+                          boxShadow: "0 2px 8px rgba(20, 83, 45, 0.2)"
+                        }}
+                      >
+                        👨‍🌾
+                      </div>
+                      <div>
+                        <h4
+                          style={{
+                            margin: 0,
+                            color: "#14532d",
+                            fontSize: "18px",
+                            fontWeight: "600"
+                          }}
+                        >
+                          Farmer
+                        </h4>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            marginTop: "2px"
+                          }}
+                        >
+                          <small
+                            style={{
+                              color: "#6b7280",
+                              fontSize: "13px",
+                            }}
+                          >
+                            📅 {new Date(
+                              post.createdAt
+                            ).toLocaleDateString('en-IN', {
+                              day: '2-digit',
+                              month: 'short',
+                              year: 'numeric'
+                            })}
+                          </small>
+                          <span style={{ color: "#d1d5db" }}>•</span>
+                          <small
+                            style={{
+                              color: "#6b7280",
+                              fontSize: "13px",
+                            }}
+                          >
+                            ⏰ {new Date(
+                              post.createdAt
+                            ).toLocaleTimeString('en-IN', {
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </small>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4
-                        style={{
-                          margin: 0,
-                          color: "#14532d",
-                          fontSize: "18px",
-                        }}
-                      >
-                        Farmer
-                      </h4>
-                      <small
-                        style={{
-                          color: "#6b7280",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {new Date(
-                          post.createdAt
-                        ).toLocaleString()}
-                      </small>
+
+                    <p
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: "1.8",
+                        color: "#1f2937",
+                        margin: "0 0 12px 0",
+                        whiteSpace: "pre-wrap",
+                      }}
+                    >
+                      {post.content}
+                    </p>
+
+                    {post.imageUrl && (
+                      <div style={{
+                        marginTop: "12px",
+                        borderRadius: "12px",
+                        overflow: "hidden",
+                        border: "1px solid #e8ece8"
+                      }}>
+                        <img
+                          src={post.imageUrl}
+                          alt="Post"
+                          style={{
+                            width: "100%",
+                            maxHeight: "350px",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    <div style={{
+                      marginTop: "16px",
+                      paddingTop: "16px",
+                      borderTop: "1px solid #f3f4f6",
+                      display: "flex",
+                      gap: "20px"
+                    }}>
+                      <span style={{
+                        color: "#6b7280",
+                        fontSize: "14px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px"
+                      }}>
+                        👍 Like
+                      </span>
+                      <span style={{
+                        color: "#6b7280",
+                        fontSize: "14px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px"
+                      }}>
+                        💬 Comment
+                      </span>
+                      <span style={{
+                        color: "#6b7280",
+                        fontSize: "14px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px"
+                      }}>
+                        🔗 Share
+                      </span>
                     </div>
                   </div>
-
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: "1.8",
-                      color: "#1f2937",
-                      margin: "10px 0",
-                      whiteSpace: "pre-wrap",
-                    }}
-                  >
-                    {post.content}
-                  </p>
-
-                  {post.imageUrl && (
-                    <img
-                      src={post.imageUrl}
-                      alt="Post"
-                      style={{
-                        maxWidth: "100%",
-                        maxHeight: "300px",
-                        borderRadius: "10px",
-                        marginTop: "15px",
-                      }}
-                    />
-                  )}
-                </div>
-              ))
+                ))}
+              </div>
             )}
           </div>
         </div>

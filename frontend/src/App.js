@@ -17,6 +17,7 @@ import AdminPosts from "./pages/AdminPosts";
 import AdminSchemes from "./pages/AdminSchemes";
 import AdminCropGuide from "./pages/AdminCropGuide";
 import PendingProducts from "./pages/PendingProducts";
+import AdminReviews from "./pages/AdminReviews";
 
 import AddProduct from "./pages/AddProduct";
 import MyProducts from "./pages/MyProducts";
@@ -44,6 +45,14 @@ import MyOrders from "./pages/MyOrders";
 /* Admin Orders */
 import AdminOrders from "./pages/AdminOrders";
 
+/* Admin Profile */
+import AdminProfile from "./pages/AdminProfile";
+
+/* New Pages */
+import About from "./pages/About";
+import CropLibrary from "./pages/CropLibrary";
+import Contact from "./pages/Contact";
+
 function App() {
   return (
     <BrowserRouter>
@@ -52,6 +61,22 @@ function App() {
         <Route
           path="/"
           element={<Home />}
+        />
+
+        {/* Public Pages */}
+        <Route
+          path="/about"
+          element={<About />}
+        />
+
+        <Route
+          path="/crop-library"
+          element={<CropLibrary />}
+        />
+
+        <Route
+          path="/contact"
+          element={<Contact />}
         />
 
         {/* Authentication */}
@@ -118,10 +143,21 @@ function App() {
           element={<PendingProducts />}
         />
 
+        <Route
+          path="/admin-reviews"
+          element={<AdminReviews />}
+        />
+
         {/* Admin Orders */}
         <Route
           path="/admin-orders"
           element={<AdminOrders />}
+        />
+
+        {/* Admin Profile */}
+        <Route
+          path="/admin-profile"
+          element={<AdminProfile />}
         />
 
         {/* Products */}

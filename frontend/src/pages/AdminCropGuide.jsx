@@ -180,15 +180,46 @@ const AdminCropGuide = () => {
   };
 
   return (
-    <div style={{ background: "#f4f7fb", minHeight: "100vh" }}>
+    <div style={{ background: "#f0f3f0", minHeight: "100vh" }}>
       <AdminNavbar />
 
       <div style={{ maxWidth: "1200px", margin: "40px auto", padding: "0 30px" }}>
-        <div style={{ marginBottom: "35px" }}>
-          <h1 style={{ color: "#14532d", fontSize: "42px", marginBottom: "10px" }}>
-            🌱 Crop Guide Management
+        {/* Header */}
+        <div style={{
+          background: "white",
+          padding: "30px",
+          borderRadius: "16px",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+          marginBottom: "30px",
+          border: "1px solid #e8ece8"
+        }}>
+          <h1 style={{
+            margin: 0,
+            fontSize: "32px",
+            color: "#14532d",
+            display: "flex",
+            alignItems: "center",
+            gap: "12px"
+          }}>
+            <span style={{ fontSize: "36px" }}>🌱</span>
+            Crop Guide Management
+            <span style={{
+              fontSize: "16px",
+              background: "#f3f4f6",
+              color: "#6b7280",
+              padding: "4px 14px",
+              borderRadius: "20px",
+              fontWeight: "500",
+              marginLeft: "8px"
+            }}>
+              {crops.length} Crops
+            </span>
           </h1>
-          <p style={{ color: "#6b7280", fontSize: "18px" }}>
+          <p style={{
+            margin: "8px 0 0 0",
+            color: "#6b7280",
+            fontSize: "16px"
+          }}>
             Add, edit, or delete crop information for the Crop Guide feature.
           </p>
         </div>
@@ -197,13 +228,21 @@ const AdminCropGuide = () => {
         <div
           style={{
             background: "#fff",
-            padding: "30px",
-            borderRadius: "18px",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+            padding: "35px",
+            borderRadius: "16px",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.06)",
+            border: "1px solid #e8ece8",
             marginBottom: "40px",
           }}
         >
-          <h2 style={{ color: "#14532d", marginBottom: "20px" }}>
+          <h2 style={{
+            color: "#14532d",
+            marginBottom: "24px",
+            fontSize: "24px",
+            display: "flex",
+            alignItems: "center",
+            gap: "10px"
+          }}>
             {isEditing ? "✏️ Edit Crop" : "➕ Add New Crop"}
           </h2>
 
@@ -211,13 +250,19 @@ const AdminCropGuide = () => {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
                 gap: "20px",
               }}
             >
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Crop Name *
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🌾 Crop Name *
                 </label>
                 <input
                   type="text"
@@ -227,17 +272,37 @@ const AdminCropGuide = () => {
                   required
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Category *
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  📂 Category *
                 </label>
                 <select
                   name="category"
@@ -246,27 +311,45 @@ const AdminCropGuide = () => {
                   required
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <option value="">Select Category</option>
-                  <option value="Vegetable">Vegetable</option>
-                  <option value="Fruit">Fruit</option>
-                  <option value="Grain">Grain</option>
-                  <option value="Pulse">Pulse</option>
-                  <option value="Oilseed">Oilseed</option>
-                  <option value="Spice">Spice</option>
-                  <option value="Flower">Flower</option>
-                  <option value="Other">Other</option>
+                  <option value="Vegetable">🥬 Vegetable</option>
+                  <option value="Fruit">🍎 Fruit</option>
+                  <option value="Grain">🌾 Grain</option>
+                  <option value="Pulse">🫘 Pulse</option>
+                  <option value="Oilseed">🛢️ Oilseed</option>
+                  <option value="Spice">🌶️ Spice</option>
+                  <option value="Flower">🌸 Flower</option>
+                  <option value="Other">📦 Other</option>
                 </select>
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Image URL
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🖼️ Image URL
                 </label>
                 <input
                   type="text"
@@ -276,17 +359,37 @@ const AdminCropGuide = () => {
                   placeholder="https://example.com/image.jpg"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Description
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  📝 Description
                 </label>
                 <textarea
                   name="description"
@@ -295,18 +398,39 @@ const AdminCropGuide = () => {
                   rows="2"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none",
                     resize: "vertical",
+                    fontFamily: "inherit"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Season
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🌱 Season
                 </label>
                 <select
                   name="season"
@@ -314,23 +438,41 @@ const AdminCropGuide = () => {
                   onChange={handleChange}
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <option value="">Select Season</option>
-                  <option value="Kharif">Kharif (Monsoon)</option>
-                  <option value="Rabi">Rabi (Winter)</option>
-                  <option value="Zaid">Zaid (Summer)</option>
-                  <option value="All Seasons">All Seasons</option>
+                  <option value="Kharif">☀️ Kharif (Monsoon)</option>
+                  <option value="Rabi">❄️ Rabi (Winter)</option>
+                  <option value="Zaid">🌤️ Zaid (Summer)</option>
+                  <option value="All Seasons">🌿 All Seasons</option>
                 </select>
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Climate
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🌡️ Climate
                 </label>
                 <input
                   type="text"
@@ -340,17 +482,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., Tropical, Temperate"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Rainfall (mm)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  💧 Rainfall (mm)
                 </label>
                 <input
                   type="text"
@@ -360,17 +522,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., 500-1000 mm"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Soil Type
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🌍 Soil Type
                 </label>
                 <input
                   type="text"
@@ -380,17 +562,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., Loamy, Sandy, Clay"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Duration (days)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  ⏳ Duration (days)
                 </label>
                 <input
                   type="text"
@@ -400,17 +602,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., 60-90 days"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Irrigation
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  💦 Irrigation
                 </label>
                 <input
                   type="text"
@@ -420,17 +642,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., Drip, Sprinkler"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Seed Price (₹ per kg)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  💰 Seed Price (₹ per kg)
                 </label>
                 <input
                   type="number"
@@ -440,17 +682,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., 500"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Video URL
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  ▶️ Video URL
                 </label>
                 <input
                   type="text"
@@ -460,17 +722,37 @@ const AdminCropGuide = () => {
                   placeholder="https://youtube.com/watch?v=..."
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Varieties (comma separated)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🌾 Varieties (comma separated)
                 </label>
                 <input
                   type="text"
@@ -480,17 +762,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., Hybrid, Heirloom"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Growth Stages (comma separated)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  📈 Growth Stages (comma separated)
                 </label>
                 <input
                   type="text"
@@ -500,17 +802,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., Seedling, Vegetative, Flowering"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Fertilizers (comma separated)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🧪 Fertilizers (comma separated)
                 </label>
                 <input
                   type="text"
@@ -520,17 +842,37 @@ const AdminCropGuide = () => {
                   placeholder="e.g., NPK, Urea, DAP"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
-                  Diseases (comma separated)
+                <label style={{
+                  display: "block",
+                  marginBottom: "6px",
+                  fontWeight: "600",
+                  color: "#14532d",
+                  fontSize: "14px"
+                }}>
+                  🦠 Diseases (comma separated)
                 </label>
                 <input
                   type="text"
@@ -540,40 +882,63 @@ const AdminCropGuide = () => {
                   placeholder="e.g., Leaf Curl, Blight"
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "12px 14px",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "10px",
+                    fontSize: "15px",
+                    transition: "all 0.3s ease",
+                    boxSizing: "border-box",
+                    background: "#fafbfc",
+                    outline: "none"
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    e.currentTarget.style.background = "white";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#d1d5db";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.background = "#fafbfc";
                   }}
                 />
               </div>
             </div>
 
-            <div style={{ marginTop: "25px", display: "flex", gap: "15px" }}>
+            <div style={{ marginTop: "25px", display: "flex", gap: "15px", flexWrap: "wrap" }}>
               <button
                 type="submit"
                 disabled={loading}
                 style={{
-                  background: "#14532d",
+                  padding: "14px 36px",
+                  background: "linear-gradient(135deg, #14532d, #1a6b1a)",
                   color: "white",
-                  padding: "12px 30px",
                   border: "none",
-                  borderRadius: "8px",
+                  borderRadius: "10px",
                   fontSize: "16px",
                   fontWeight: "600",
-                  cursor: "pointer",
+                  cursor: loading ? "not-allowed" : "pointer",
                   transition: "all 0.3s ease",
+                  boxShadow: "0 4px 12px rgba(20, 83, 45, 0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  opacity: loading ? 0.7 : 1
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#0b5d1e";
-                  e.currentTarget.style.transform = "scale(1.02)";
+                  if (!loading) {
+                    e.currentTarget.style.transform = "translateY(-3px)";
+                    e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#14532d";
-                  e.currentTarget.style.transform = "scale(1)";
+                  if (!loading) {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
+                  }
                 }}
               >
-                {loading ? "Saving..." : isEditing ? "✏️ Update Crop" : "➕ Add Crop"}
+                {loading ? "⏳ Saving..." : isEditing ? "✏️ Update Crop" : "➕ Add Crop"}
               </button>
 
               {isEditing && (
@@ -581,24 +946,29 @@ const AdminCropGuide = () => {
                   type="button"
                   onClick={resetForm}
                   style={{
-                    background: "#6b7280",
-                    color: "white",
-                    padding: "12px 30px",
+                    padding: "14px 32px",
+                    background: "#f3f4f6",
+                    color: "#1f2937",
                     border: "none",
-                    borderRadius: "8px",
+                    borderRadius: "10px",
                     fontSize: "16px",
                     fontWeight: "600",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#4b5563";
+                    e.currentTarget.style.background = "#e5e7eb";
+                    e.currentTarget.style.transform = "scale(1.02)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#6b7280";
+                    e.currentTarget.style.background = "#f3f4f6";
+                    e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
-                  Cancel
+                  ❌ Cancel
                 </button>
               )}
             </div>
@@ -606,134 +976,271 @@ const AdminCropGuide = () => {
         </div>
 
         {/* Crops List */}
-        <h2 style={{ color: "#14532d", marginBottom: "20px" }}>
-          📋 All Crops ({crops.length})
-        </h2>
-
-        {loading && (
-          <div style={{ textAlign: "center", padding: "40px" }}>
-            <p>Loading crops...</p>
+        <div style={{
+          background: "white",
+          borderRadius: "16px",
+          padding: "30px",
+          boxShadow: "0 4px 16px rgba(0,0,0,0.06)",
+          border: "1px solid #e8ece8"
+        }}>
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "24px",
+            flexWrap: "wrap",
+            gap: "10px"
+          }}>
+            <h2 style={{
+              margin: 0,
+              color: "#14532d",
+              fontSize: "24px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px"
+            }}>
+              <span>📋</span> All Crops
+            </h2>
+            <span style={{
+              color: "#6b7280",
+              fontSize: "14px",
+              background: "#f3f4f6",
+              padding: "4px 14px",
+              borderRadius: "20px",
+              fontWeight: "500"
+            }}>
+              {crops.length} crops
+            </span>
           </div>
-        )}
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "25px",
-          }}
-        >
-          {Array.isArray(crops) &&
-            crops.map((crop) => (
-              <div
-                key={crop._id}
-                style={{
-                  background: "#fff",
-                  padding: "20px",
-                  borderRadius: "18px",
-                  boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-                  border: "1px solid #e5e7eb",
-                  transition: "0.3s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-5px)";
-                  e.currentTarget.style.boxShadow = "0 15px 35px rgba(0,0,0,0.15)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0px)";
-                  e.currentTarget.style.boxShadow = "0 10px 25px rgba(0,0,0,0.08)";
-                }}
-              >
-                <img
-                  src={crop.image || "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600"}
-                  alt={crop.name}
-                  style={{
-                    width: "100%",
-                    height: "180px",
-                    objectFit: "cover",
-                    borderRadius: "10px",
-                    marginBottom: "15px",
-                  }}
-                />
+          {loading && (
+            <div style={{
+              textAlign: "center",
+              padding: "40px"
+            }}>
+              <div style={{
+                width: "50px",
+                height: "50px",
+                border: "6px solid #f3f3f3",
+                borderTop: "6px solid #14532d",
+                borderRadius: "50%",
+                animation: "spin 1s linear infinite",
+                margin: "0 auto 20px"
+              }}></div>
+              <p style={{ color: "#6b7280" }}>Loading crops...</p>
+              <style>
+                {`
+                  @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                  }
+                `}
+              </style>
+            </div>
+          )}
 
-                <h3 style={{ color: "#14532d", fontSize: "22px", marginBottom: "5px" }}>
-                  {crop.name}
-                </h3>
+          {crops.length === 0 && !loading && (
+            <div style={{
+              textAlign: "center",
+              padding: "60px 20px",
+              background: "#f9fafb",
+              borderRadius: "12px"
+            }}>
+              <div style={{ fontSize: "64px", marginBottom: "15px" }}>🌱</div>
+              <p style={{ fontSize: "18px", color: "#6b7280", margin: 0 }}>
+                No crops added yet. Click "Add New Crop" to get started!
+              </p>
+            </div>
+          )}
 
-                <p style={{ color: "#6b7280", marginBottom: "10px" }}>
-                  <strong>Category:</strong> {crop.category}
-                </p>
-
-                <p style={{ color: "#6b7280", marginBottom: "10px", fontSize: "14px" }}>
-                  {crop.description?.substring(0, 100)}...
-                </p>
-
-                <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
-                  <button
-                    onClick={() => handleEdit(crop)}
-                    style={{
-                      flex: 1,
-                      background: "#1a56db",
-                      color: "white",
-                      padding: "8px 15px",
-                      border: "none",
-                      borderRadius: "8px",
-                      cursor: "pointer",
-                      fontWeight: "600",
-                      transition: "all 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#1e40af";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#1a56db";
-                    }}
-                  >
-                    ✏️ Edit
-                  </button>
-
-                  <button
-                    onClick={() => handleDelete(crop._id)}
-                    style={{
-                      flex: 1,
-                      background: "#dc2626",
-                      color: "white",
-                      padding: "8px 15px",
-                      border: "none",
-                      borderRadius: "8px",
-                      cursor: "pointer",
-                      fontWeight: "600",
-                      transition: "all 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#b91c1c";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#dc2626";
-                    }}
-                  >
-                    🗑️ Delete
-                  </button>
-                </div>
-              </div>
-            ))}
-        </div>
-
-        {crops.length === 0 && !loading && (
           <div
             style={{
-              textAlign: "center",
-              padding: "60px",
-              background: "#fff",
-              borderRadius: "18px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+              gap: "25px",
             }}
           >
-            <p style={{ fontSize: "18px", color: "#6b7280" }}>
-              No crops added yet. Click "Add New Crop" to get started!
-            </p>
+            {Array.isArray(crops) &&
+              crops.map((crop) => (
+                <div
+                  key={crop._id}
+                  style={{
+                    background: "#fff",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.06)",
+                    border: "1px solid #e8ece8",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-6px)";
+                    e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.12)";
+                    e.currentTarget.style.borderColor = "#14532d";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0px)";
+                    e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.06)";
+                    e.currentTarget.style.borderColor = "#e8ece8";
+                  }}
+                >
+                  <img
+                    src={crop.image || "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600"}
+                    alt={crop.name}
+                    style={{
+                      width: "100%",
+                      height: "200px",
+                      objectFit: "cover",
+                      borderBottom: "1px solid #e8ece8"
+                    }}
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600";
+                    }}
+                  />
+
+                  <div style={{ padding: "20px" }}>
+                    <div style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      marginBottom: "8px"
+                    }}>
+                      <h3 style={{
+                        margin: 0,
+                        color: "#14532d",
+                        fontSize: "20px",
+                        fontWeight: "600"
+                      }}>
+                        {crop.name}
+                      </h3>
+                      <span style={{
+                        background: "#e8f5e9",
+                        color: "#14532d",
+                        padding: "2px 12px",
+                        borderRadius: "20px",
+                        fontSize: "12px",
+                        fontWeight: "600"
+                      }}>
+                        {crop.category}
+                      </span>
+                    </div>
+
+                    <p style={{
+                      color: "#6b7280",
+                      fontSize: "14px",
+                      lineHeight: "1.6",
+                      marginBottom: "12px",
+                      minHeight: "40px"
+                    }}>
+                      {crop.description?.substring(0, 100)}...
+                    </p>
+
+                    <div style={{
+                      display: "flex",
+                      gap: "8px",
+                      flexWrap: "wrap",
+                      marginBottom: "16px"
+                    }}>
+                      <span style={{
+                        background: "#f3f4f6",
+                        padding: "2px 10px",
+                        borderRadius: "12px",
+                        fontSize: "12px",
+                        color: "#4b5563"
+                      }}>
+                        🌱 {crop.season || "N/A"}
+                      </span>
+                      <span style={{
+                        background: "#f3f4f6",
+                        padding: "2px 10px",
+                        borderRadius: "12px",
+                        fontSize: "12px",
+                        color: "#4b5563"
+                      }}>
+                        ⏳ {crop.duration || "N/A"}
+                      </span>
+                      {crop.seedPrice && (
+                        <span style={{
+                          background: "#fef3c7",
+                          padding: "2px 10px",
+                          borderRadius: "12px",
+                          fontSize: "12px",
+                          color: "#92400e"
+                        }}>
+                          💰 ₹{crop.seedPrice}/kg
+                        </span>
+                      )}
+                    </div>
+
+                    <div style={{ display: "flex", gap: "10px" }}>
+                      <button
+                        onClick={() => handleEdit(crop)}
+                        style={{
+                          flex: 1,
+                          background: "#1a56db",
+                          color: "white",
+                          padding: "10px 15px",
+                          border: "none",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                          fontWeight: "600",
+                          fontSize: "14px",
+                          transition: "all 0.3s ease",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "6px"
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "#1e40af";
+                          e.currentTarget.style.transform = "scale(1.02)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "#1a56db";
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
+                        ✏️ Edit
+                      </button>
+
+                      <button
+                        onClick={() => handleDelete(crop._id)}
+                        style={{
+                          flex: 1,
+                          background: "#fee2e2",
+                          color: "#dc2626",
+                          padding: "10px 15px",
+                          border: "none",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                          fontWeight: "600",
+                          fontSize: "14px",
+                          transition: "all 0.3s ease",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "6px"
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "#dc2626";
+                          e.currentTarget.style.color = "white";
+                          e.currentTarget.style.transform = "scale(1.02)";
+                          e.currentTarget.style.boxShadow = "0 4px 12px rgba(220, 38, 38, 0.3)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "#fee2e2";
+                          e.currentTarget.style.color = "#dc2626";
+                          e.currentTarget.style.transform = "scale(1)";
+                          e.currentTarget.style.boxShadow = "none";
+                        }}
+                      >
+                        🗑️ Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

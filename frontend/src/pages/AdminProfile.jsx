@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FarmerNavbar from "../components/FarmerNavbar";
+import AdminNavbar from "../components/AdminNavbar";
 
-const Profile = () => {
+const AdminProfile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
@@ -81,11 +81,11 @@ const Profile = () => {
     return (
       <div
         style={{
-          background: "#f4f7fb",
+          background: "#f0f3f0",
           minHeight: "100vh",
         }}
       >
-        <FarmerNavbar />
+        <AdminNavbar />
         <div
           style={{
             display: "flex",
@@ -95,8 +95,24 @@ const Profile = () => {
           }}
         >
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "48px", marginBottom: "10px" }}>⏳</div>
+            <div style={{
+              width: "60px",
+              height: "60px",
+              border: "6px solid #f3f3f3",
+              borderTop: "6px solid #14532d",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+              margin: "0 auto 20px"
+            }}></div>
             <p style={{ color: "#6b7280", fontSize: "18px" }}>Loading profile...</p>
+            <style>
+              {`
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+              `}
+            </style>
           </div>
         </div>
       </div>
@@ -106,17 +122,17 @@ const Profile = () => {
   return (
     <div
       style={{
-        background: "#f4f7fb",
+        background: "#f0f3f0",
         minHeight: "100vh",
       }}
     >
       {/* Navbar */}
-      <FarmerNavbar />
+      <AdminNavbar />
 
       {/* Page Content */}
       <div
         style={{
-          maxWidth: "900px",
+          maxWidth: "1000px",
           margin: "40px auto",
           padding: "0 30px",
         }}
@@ -124,54 +140,63 @@ const Profile = () => {
         <div
           style={{
             background: "#fff",
-            padding: "40px",
+            padding: "45px",
             borderRadius: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-            border: "1px solid #e5e7eb",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+            border: "1px solid #e8ece8",
           }}
         >
           <div
             style={{
-              marginBottom: "30px",
-              borderBottom: "2px solid #e5e7eb",
-              paddingBottom: "20px",
+              marginBottom: "35px",
+              borderBottom: "2px solid #e8ece8",
+              paddingBottom: "25px",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              flexWrap: "wrap",
+              gap: "15px"
             }}
           >
             <div>
               <h1
                 style={{
-                  fontSize: "36px",
+                  fontSize: "32px",
                   color: "#14532d",
                   marginBottom: "5px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px"
                 }}
               >
-                👨‍🌾 Farmer Profile
+                <span style={{ fontSize: "36px" }}>🛠</span>
+                Admin Profile
               </h1>
               <p
                 style={{
                   color: "#6b7280",
                   fontSize: "16px",
+                  margin: 0
                 }}
               >
-                Manage your personal information and account settings.
+                Manage your administrator account settings.
               </p>
             </div>
             <div
               style={{
-                width: "80px",
-                height: "80px",
+                width: "90px",
+                height: "90px",
                 borderRadius: "50%",
-                background: "#14532d",
+                background: "linear-gradient(135deg, #14532d, #1a6b1a)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "40px",
+                fontSize: "44px",
+                boxShadow: "0 4px 12px rgba(20, 83, 45, 0.3)",
+                border: "4px solid #e8ece8"
               }}
             >
-              👨‍🌾
+              🛠
             </div>
           </div>
 
@@ -179,33 +204,37 @@ const Profile = () => {
             // Edit Profile Form
             <div
               style={{
-                background: "#f9fafb",
-                padding: "25px",
-                borderRadius: "15px",
-                border: "1px solid #e5e7eb",
+                background: "linear-gradient(135deg, #f9fafb, #f3f4f6)",
+                padding: "30px",
+                borderRadius: "16px",
+                border: "2px solid #e8ece8",
               }}
             >
               <h3
                 style={{
                   color: "#14532d",
-                  marginBottom: "20px",
-                  fontSize: "20px",
+                  marginBottom: "24px",
+                  fontSize: "22px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px"
                 }}
               >
-                ✏️ Edit Profile
+                <span>✏️</span> Edit Profile
               </h3>
 
               <form onSubmit={updateProfile}>
-                <div style={{ marginBottom: "20px" }}>
+                <div style={{ marginBottom: "22px" }}>
                   <label
                     style={{
                       display: "block",
                       marginBottom: "8px",
                       fontWeight: "600",
-                      color: "#1f2937",
+                      color: "#14532d",
+                      fontSize: "15px"
                     }}
                   >
-                    Full Name
+                    👤 Full Name
                   </label>
                   <input
                     name="name"
@@ -219,28 +248,32 @@ const Profile = () => {
                       border: "2px solid #d1d5db",
                       fontSize: "16px",
                       outline: "none",
-                      transition: "border-color 0.3s",
+                      transition: "all 0.3s ease",
                       backgroundColor: "#fff",
+                      boxSizing: "border-box"
                     }}
                     onFocus={(e) => {
                       e.currentTarget.style.borderColor = "#14532d";
+                      e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                     }}
                     onBlur={(e) => {
                       e.currentTarget.style.borderColor = "#d1d5db";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
 
-                <div style={{ marginBottom: "20px" }}>
+                <div style={{ marginBottom: "22px" }}>
                   <label
                     style={{
                       display: "block",
                       marginBottom: "8px",
                       fontWeight: "600",
-                      color: "#1f2937",
+                      color: "#14532d",
+                      fontSize: "15px"
                     }}
                   >
-                    Email Address
+                    📧 Email Address
                   </label>
                   <input
                     name="email"
@@ -255,28 +288,32 @@ const Profile = () => {
                       border: "2px solid #d1d5db",
                       fontSize: "16px",
                       outline: "none",
-                      transition: "border-color 0.3s",
+                      transition: "all 0.3s ease",
                       backgroundColor: "#fff",
+                      boxSizing: "border-box"
                     }}
                     onFocus={(e) => {
                       e.currentTarget.style.borderColor = "#14532d";
+                      e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                     }}
                     onBlur={(e) => {
                       e.currentTarget.style.borderColor = "#d1d5db";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
 
-                <div style={{ marginBottom: "20px" }}>
+                <div style={{ marginBottom: "22px" }}>
                   <label
                     style={{
                       display: "block",
                       marginBottom: "8px",
                       fontWeight: "600",
-                      color: "#1f2937",
+                      color: "#14532d",
+                      fontSize: "15px"
                     }}
                   >
-                    New Password
+                    🔒 New Password
                   </label>
                   <input
                     type="password"
@@ -291,14 +328,17 @@ const Profile = () => {
                       border: "2px solid #d1d5db",
                       fontSize: "16px",
                       outline: "none",
-                      transition: "border-color 0.3s",
+                      transition: "all 0.3s ease",
                       backgroundColor: "#fff",
+                      boxSizing: "border-box"
                     }}
                     onFocus={(e) => {
                       e.currentTarget.style.borderColor = "#14532d";
+                      e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                     }}
                     onBlur={(e) => {
                       e.currentTarget.style.borderColor = "#d1d5db";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
@@ -307,13 +347,14 @@ const Profile = () => {
                   style={{
                     display: "flex",
                     gap: "15px",
+                    flexWrap: "wrap"
                   }}
                 >
                   <button
                     type="submit"
                     style={{
-                      padding: "14px 35px",
-                      background: "#14532d",
+                      padding: "14px 40px",
+                      background: "linear-gradient(135deg, #14532d, #1a6b1a)",
                       color: "white",
                       border: "none",
                       borderRadius: "10px",
@@ -321,14 +362,18 @@ const Profile = () => {
                       fontWeight: "600",
                       fontSize: "16px",
                       transition: "all 0.3s ease",
+                      boxShadow: "0 4px 12px rgba(20, 83, 45, 0.3)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px"
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#0b5d1e";
-                      e.currentTarget.style.transform = "scale(1.02)";
+                      e.currentTarget.style.transform = "translateY(-3px)";
+                      e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#14532d";
-                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
                     }}
                   >
                     💾 Save Changes
@@ -345,8 +390,8 @@ const Profile = () => {
                       });
                     }}
                     style={{
-                      padding: "14px 25px",
-                      background: "#e5e7eb",
+                      padding: "14px 30px",
+                      background: "#f3f4f6",
                       color: "#1f2937",
                       border: "none",
                       borderRadius: "10px",
@@ -354,12 +399,17 @@ const Profile = () => {
                       fontWeight: "600",
                       fontSize: "16px",
                       transition: "all 0.3s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px"
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#d1d5db";
+                      e.currentTarget.style.background = "#e5e7eb";
+                      e.currentTarget.style.transform = "scale(1.02)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#e5e7eb";
+                      e.currentTarget.style.background = "#f3f4f6";
+                      e.currentTarget.style.transform = "scale(1)";
                     }}
                   >
                     ❌ Cancel
@@ -381,25 +431,38 @@ const Profile = () => {
                 <div
                   style={{
                     background: "#f9fafb",
-                    padding: "20px",
+                    padding: "22px 24px",
                     borderRadius: "12px",
-                    border: "1px solid #e5e7eb",
+                    border: "1px solid #e8ece8",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "#e8ece8";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <p
                     style={{
                       color: "#6b7280",
-                      fontSize: "14px",
-                      marginBottom: "5px",
+                      fontSize: "13px",
+                      marginBottom: "6px",
+                      fontWeight: "500",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px"
                     }}
                   >
-                    Full Name
+                    👤 Full Name
                   </p>
                   <h3
                     style={{
                       color: "#14532d",
                       margin: 0,
-                      fontSize: "22px",
+                      fontSize: "24px",
+                      fontWeight: "600"
                     }}
                   >
                     {user?.name || "N/A"}
@@ -409,25 +472,38 @@ const Profile = () => {
                 <div
                   style={{
                     background: "#f9fafb",
-                    padding: "20px",
+                    padding: "22px 24px",
                     borderRadius: "12px",
-                    border: "1px solid #e5e7eb",
+                    border: "1px solid #e8ece8",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "#e8ece8";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <p
                     style={{
                       color: "#6b7280",
-                      fontSize: "14px",
-                      marginBottom: "5px",
+                      fontSize: "13px",
+                      marginBottom: "6px",
+                      fontWeight: "500",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px"
                     }}
                   >
-                    Email Address
+                    📧 Email Address
                   </p>
                   <h3
                     style={{
                       color: "#14532d",
                       margin: 0,
-                      fontSize: "22px",
+                      fontSize: "24px",
+                      fontWeight: "600"
                     }}
                   >
                     {user?.email || "N/A"}
@@ -445,19 +521,29 @@ const Profile = () => {
               >
                 <div
                   style={{
-                    background: "#f0f9f0",
-                    padding: "20px",
+                    background: "linear-gradient(135deg, #f0fdf4, #dcfce7)",
+                    padding: "24px",
                     borderRadius: "12px",
-                    border: "1px solid #c8e6c9",
+                    border: "1px solid #bbf7d0",
                     textAlign: "center",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-4px)";
+                    e.currentTarget.style.boxShadow = "0 8px 25px rgba(20, 83, 45, 0.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
-                  <div style={{ fontSize: "32px", marginBottom: "5px" }}>📦</div>
+                  <div style={{ fontSize: "36px", marginBottom: "8px" }}>📦</div>
                   <p
                     style={{
-                      color: "#6b7280",
+                      color: "#065f46",
                       fontSize: "14px",
-                      marginBottom: "5px",
+                      marginBottom: "4px",
+                      fontWeight: "500"
                     }}
                   >
                     Products Added
@@ -466,7 +552,8 @@ const Profile = () => {
                     style={{
                       color: "#14532d",
                       margin: 0,
-                      fontSize: "28px",
+                      fontSize: "32px",
+                      fontWeight: "700"
                     }}
                   >
                     {user?.productsCount || 0}
@@ -475,19 +562,29 @@ const Profile = () => {
 
                 <div
                   style={{
-                    background: "#f0f9f0",
-                    padding: "20px",
+                    background: "linear-gradient(135deg, #f0fdf4, #dcfce7)",
+                    padding: "24px",
                     borderRadius: "12px",
-                    border: "1px solid #c8e6c9",
+                    border: "1px solid #bbf7d0",
                     textAlign: "center",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-4px)";
+                    e.currentTarget.style.boxShadow = "0 8px 25px rgba(20, 83, 45, 0.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
-                  <div style={{ fontSize: "32px", marginBottom: "5px" }}>📝</div>
+                  <div style={{ fontSize: "36px", marginBottom: "8px" }}>📝</div>
                   <p
                     style={{
-                      color: "#6b7280",
+                      color: "#065f46",
                       fontSize: "14px",
-                      marginBottom: "5px",
+                      marginBottom: "4px",
+                      fontWeight: "500"
                     }}
                   >
                     Posts Created
@@ -496,7 +593,8 @@ const Profile = () => {
                     style={{
                       color: "#14532d",
                       margin: 0,
-                      fontSize: "28px",
+                      fontSize: "32px",
+                      fontWeight: "700"
                     }}
                   >
                     {user?.postsCount || 0}
@@ -508,23 +606,28 @@ const Profile = () => {
                 onClick={() => setIsEditing(true)}
                 style={{
                   width: "100%",
-                  padding: "16px",
-                  background: "#14532d",
+                  padding: "18px",
+                  background: "linear-gradient(135deg, #14532d, #1a6b1a)",
                   color: "white",
                   border: "none",
-                  borderRadius: "10px",
+                  borderRadius: "12px",
                   cursor: "pointer",
                   fontWeight: "600",
                   fontSize: "18px",
                   transition: "all 0.3s ease",
+                  boxShadow: "0 4px 12px rgba(20, 83, 45, 0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px"
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#0b5d1e";
-                  e.currentTarget.style.transform = "scale(1.02)";
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#14532d";
-                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
                 }}
               >
                 ✏️ Edit Profile
@@ -537,4 +640,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default AdminProfile;

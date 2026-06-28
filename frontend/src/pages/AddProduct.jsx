@@ -66,7 +66,7 @@ const AddProduct = () => {
   return (
     <div
       style={{
-        background: "#f4f7fb",
+        background: "#f0f3f0",
         minHeight: "100vh",
       }}
     >
@@ -76,7 +76,7 @@ const AddProduct = () => {
       {/* Page Content */}
       <div
         style={{
-          maxWidth: "800px",
+          maxWidth: "900px",
           margin: "40px auto",
           padding: "0 30px",
         }}
@@ -84,32 +84,37 @@ const AddProduct = () => {
         <div
           style={{
             background: "#fff",
-            padding: "40px",
+            padding: "45px",
             borderRadius: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-            border: "1px solid #e5e7eb",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+            border: "1px solid #e8ece8",
           }}
         >
           <div
             style={{
-              marginBottom: "30px",
-              borderBottom: "2px solid #e5e7eb",
-              paddingBottom: "20px",
+              marginBottom: "35px",
+              borderBottom: "2px solid #e8ece8",
+              paddingBottom: "25px",
             }}
           >
             <h1
               style={{
-                fontSize: "36px",
+                fontSize: "34px",
                 color: "#14532d",
-                marginBottom: "10px",
+                marginBottom: "8px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
               }}
             >
-              🌾 Add New Product
+              <span style={{ fontSize: "38px" }}>🌾</span>
+              Add New Product
             </h1>
             <p
               style={{
                 color: "#6b7280",
                 fontSize: "16px",
+                margin: 0
               }}
             >
               List your agricultural products for sale on the marketplace.
@@ -118,16 +123,17 @@ const AddProduct = () => {
 
           <form onSubmit={addProduct}>
             {/* Product Name */}
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "22px" }}>
               <label
                 style={{
                   display: "block",
                   marginBottom: "8px",
                   fontWeight: "600",
-                  color: "#1f2937",
+                  color: "#14532d",
+                  fontSize: "15px"
                 }}
               >
-                Product Name *
+                📝 Product Name *
               </label>
               <input
                 name="name"
@@ -142,31 +148,35 @@ const AddProduct = () => {
                   border: "2px solid #d1d5db",
                   fontSize: "16px",
                   outline: "none",
-                  transition: "border-color 0.3s",
-                  backgroundColor: "#f9fafb",
+                  transition: "all 0.3s ease",
+                  backgroundColor: "#fafbfc",
+                  boxSizing: "border-box"
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = "#14532d";
+                  e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                   e.currentTarget.style.backgroundColor = "#fff";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "#d1d5db";
-                  e.currentTarget.style.backgroundColor = "#f9fafb";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.backgroundColor = "#fafbfc";
                 }}
               />
             </div>
 
             {/* Category */}
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "22px" }}>
               <label
                 style={{
                   display: "block",
                   marginBottom: "8px",
                   fontWeight: "600",
-                  color: "#1f2937",
+                  color: "#14532d",
+                  fontSize: "15px"
                 }}
               >
-                Category *
+                📂 Category *
               </label>
               <select
                 name="category"
@@ -180,16 +190,20 @@ const AddProduct = () => {
                   border: "2px solid #d1d5db",
                   fontSize: "16px",
                   outline: "none",
-                  transition: "border-color 0.3s",
-                  backgroundColor: "#f9fafb",
+                  transition: "all 0.3s ease",
+                  backgroundColor: "#fafbfc",
+                  boxSizing: "border-box",
+                  appearance: "auto"
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = "#14532d";
+                  e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                   e.currentTarget.style.backgroundColor = "#fff";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "#d1d5db";
-                  e.currentTarget.style.backgroundColor = "#f9fafb";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.backgroundColor = "#fafbfc";
                 }}
               >
                 <option value="">Select Category</option>
@@ -209,7 +223,7 @@ const AddProduct = () => {
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
                 gap: "20px",
-                marginBottom: "20px",
+                marginBottom: "22px",
               }}
             >
               <div>
@@ -218,10 +232,11 @@ const AddProduct = () => {
                     display: "block",
                     marginBottom: "8px",
                     fontWeight: "600",
-                    color: "#1f2937",
+                    color: "#14532d",
+                    fontSize: "15px"
                   }}
                 >
-                  Price (₹) *
+                  💰 Price (₹) *
                 </label>
                 <input
                   name="price"
@@ -237,16 +252,19 @@ const AddProduct = () => {
                     border: "2px solid #d1d5db",
                     fontSize: "16px",
                     outline: "none",
-                    transition: "border-color 0.3s",
-                    backgroundColor: "#f9fafb",
+                    transition: "all 0.3s ease",
+                    backgroundColor: "#fafbfc",
+                    boxSizing: "border-box"
                   }}
                   onFocus={(e) => {
                     e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                     e.currentTarget.style.backgroundColor = "#fff";
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = "#d1d5db";
-                    e.currentTarget.style.backgroundColor = "#f9fafb";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.backgroundColor = "#fafbfc";
                   }}
                 />
               </div>
@@ -257,10 +275,11 @@ const AddProduct = () => {
                     display: "block",
                     marginBottom: "8px",
                     fontWeight: "600",
-                    color: "#1f2937",
+                    color: "#14532d",
+                    fontSize: "15px"
                   }}
                 >
-                  Quantity (kg/L) *
+                  📦 Quantity (kg/L) *
                 </label>
                 <input
                   name="quantity"
@@ -276,32 +295,36 @@ const AddProduct = () => {
                     border: "2px solid #d1d5db",
                     fontSize: "16px",
                     outline: "none",
-                    transition: "border-color 0.3s",
-                    backgroundColor: "#f9fafb",
+                    transition: "all 0.3s ease",
+                    backgroundColor: "#fafbfc",
+                    boxSizing: "border-box"
                   }}
                   onFocus={(e) => {
                     e.currentTarget.style.borderColor = "#14532d";
+                    e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                     e.currentTarget.style.backgroundColor = "#fff";
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = "#d1d5db";
-                    e.currentTarget.style.backgroundColor = "#f9fafb";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.backgroundColor = "#fafbfc";
                   }}
                 />
               </div>
             </div>
 
             {/* Image URL */}
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "22px" }}>
               <label
                 style={{
                   display: "block",
                   marginBottom: "8px",
                   fontWeight: "600",
-                  color: "#1f2937",
+                  color: "#14532d",
+                  fontSize: "15px"
                 }}
               >
-                Image URL
+                🖼️ Image URL
               </label>
               <input
                 name="imageUrl"
@@ -315,49 +338,64 @@ const AddProduct = () => {
                   border: "2px solid #d1d5db",
                   fontSize: "16px",
                   outline: "none",
-                  transition: "border-color 0.3s",
-                  backgroundColor: "#f9fafb",
+                  transition: "all 0.3s ease",
+                  backgroundColor: "#fafbfc",
+                  boxSizing: "border-box"
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = "#14532d";
+                  e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                   e.currentTarget.style.backgroundColor = "#fff";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "#d1d5db";
-                  e.currentTarget.style.backgroundColor = "#f9fafb";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.backgroundColor = "#fafbfc";
                 }}
               />
               {formData.imageUrl && (
-                <div style={{ marginTop: "10px" }}>
-                  <p style={{ fontSize: "14px", color: "#6b7280" }}>Preview:</p>
-                  <img
-                    src={formData.imageUrl}
-                    alt="Product preview"
-                    style={{
-                      maxWidth: "200px",
-                      maxHeight: "200px",
-                      borderRadius: "10px",
-                      border: "1px solid #e5e7eb",
-                    }}
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
+                <div style={{ marginTop: "12px" }}>
+                  <p style={{ 
+                    fontSize: "13px", 
+                    color: "#6b7280",
+                    marginBottom: "8px",
+                    fontWeight: "500"
+                  }}>📸 Image Preview:</p>
+                  <div style={{
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    border: "2px solid #e8ece8",
+                    maxWidth: "250px"
+                  }}>
+                    <img
+                      src={formData.imageUrl}
+                      alt="Product preview"
+                      style={{
+                        width: "100%",
+                        maxHeight: "200px",
+                        objectFit: "cover",
+                      }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  </div>
                 </div>
               )}
             </div>
 
             {/* Description */}
-            <div style={{ marginBottom: "25px" }}>
+            <div style={{ marginBottom: "28px" }}>
               <label
                 style={{
                   display: "block",
                   marginBottom: "8px",
                   fontWeight: "600",
-                  color: "#1f2937",
+                  color: "#14532d",
+                  fontSize: "15px"
                 }}
               >
-                Description *
+                📝 Description *
               </label>
               <textarea
                 name="description"
@@ -374,19 +412,54 @@ const AddProduct = () => {
                   fontSize: "16px",
                   outline: "none",
                   resize: "vertical",
-                  transition: "border-color 0.3s",
-                  backgroundColor: "#f9fafb",
+                  transition: "all 0.3s ease",
+                  backgroundColor: "#fafbfc",
                   fontFamily: "inherit",
+                  boxSizing: "border-box",
+                  minHeight: "120px"
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = "#14532d";
+                  e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
                   e.currentTarget.style.backgroundColor = "#fff";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "#d1d5db";
-                  e.currentTarget.style.backgroundColor = "#f9fafb";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.backgroundColor = "#fafbfc";
                 }}
               />
+            </div>
+
+            {/* Info Box */}
+            <div style={{
+              background: "linear-gradient(135deg, #f0fdf4, #dcfce7)",
+              padding: "16px 20px",
+              borderRadius: "10px",
+              marginBottom: "25px",
+              border: "1px solid #bbf7d0",
+              display: "flex",
+              alignItems: "center",
+              gap: "12px"
+            }}>
+              <span style={{ fontSize: "24px" }}>ℹ️</span>
+              <div>
+                <p style={{
+                  margin: 0,
+                  color: "#14532d",
+                  fontSize: "14px",
+                  fontWeight: "500"
+                }}>
+                  Product will be reviewed by admin before publishing
+                </p>
+                <p style={{
+                  margin: "2px 0 0 0",
+                  color: "#166534",
+                  fontSize: "13px"
+                }}>
+                  Once approved, it will appear in the marketplace
+                </p>
+              </div>
             </div>
 
             {/* Buttons */}
@@ -394,6 +467,7 @@ const AddProduct = () => {
               style={{
                 display: "flex",
                 gap: "15px",
+                flexWrap: "wrap"
               }}
             >
               <button
@@ -401,26 +475,33 @@ const AddProduct = () => {
                 disabled={loading}
                 style={{
                   flex: 1,
-                  padding: "16px",
-                  background: loading ? "#6b7280" : "#14532d",
+                  padding: "16px 24px",
+                  background: loading ? "#9ca3af" : "linear-gradient(135deg, #14532d, #1a6b1a)",
                   color: "white",
                   border: "none",
                   borderRadius: "10px",
                   cursor: loading ? "not-allowed" : "pointer",
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "17px",
                   transition: "all 0.3s ease",
+                  boxShadow: loading ? "none" : "0 4px 12px rgba(20, 83, 45, 0.3)",
+                  opacity: loading ? 0.7 : 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  minWidth: "180px"
                 }}
                 onMouseEnter={(e) => {
                   if (!loading) {
-                    e.currentTarget.style.background = "#0b5d1e";
-                    e.currentTarget.style.transform = "scale(1.02)";
+                    e.currentTarget.style.transform = "translateY(-3px)";
+                    e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!loading) {
-                    e.currentTarget.style.background = "#14532d";
-                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
                   }
                 }}
               >
@@ -431,24 +512,29 @@ const AddProduct = () => {
                 type="button"
                 onClick={() => navigate("/marketplace")}
                 style={{
-                  padding: "16px 30px",
-                  background: "#e5e7eb",
+                  padding: "16px 32px",
+                  background: "#f3f4f6",
                   color: "#1f2937",
                   border: "none",
                   borderRadius: "10px",
                   cursor: "pointer",
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "17px",
                   transition: "all 0.3s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px"
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#d1d5db";
+                  e.currentTarget.style.background = "#e5e7eb";
+                  e.currentTarget.style.transform = "scale(1.02)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#e5e7eb";
+                  e.currentTarget.style.background = "#f3f4f6";
+                  e.currentTarget.style.transform = "scale(1)";
                 }}
               >
-                Cancel
+                ❌ Cancel
               </button>
             </div>
           </form>

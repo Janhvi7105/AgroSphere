@@ -5,6 +5,18 @@ import AdminNavbar from "../components/AdminNavbar";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () =>
+      window.removeEventListener("resize", handleResize);
+  }, []);
 
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
@@ -57,12 +69,13 @@ const AdminDashboard = () => {
 
   const cardStyle = {
     color: "white",
-    padding: "30px",
+    padding: isMobile ? "20px" : "30px",
     borderRadius: "20px",
     cursor: "pointer",
     textAlign: "center",
     boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
     transition: "0.3s",
+    minHeight: isMobile ? "180px" : "220px",
   };
 
   return (
@@ -73,12 +86,14 @@ const AdminDashboard = () => {
         style={{
           background: "#f4f7fc",
           minHeight: "100vh",
-          padding: "40px",
+          padding: isMobile ? "20px" : "40px",
         }}
       >
         <h1
           style={{
             marginBottom: "10px",
+            fontSize: isMobile ? "30px" : "42px",
+            textAlign: isMobile ? "center" : "left",
           }}
         >
           🛠 Admin Dashboard
@@ -88,6 +103,8 @@ const AdminDashboard = () => {
           style={{
             color: "#666",
             marginBottom: "30px",
+            textAlign: isMobile ? "center" : "left",
+            fontSize: isMobile ? "15px" : "17px",
           }}
         >
           Manage Users, Products and Community Posts
@@ -115,7 +132,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               {users.length}
@@ -138,7 +155,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               {products.length}
@@ -161,7 +178,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               {posts.length}
@@ -184,7 +201,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               {orderStats.totalOrders}
@@ -216,7 +233,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               ₹{orderStats.revenue}
@@ -237,7 +254,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               {orderStats.pendingOrders}
@@ -258,7 +275,7 @@ const AdminDashboard = () => {
 
             <h1
               style={{
-                fontSize: "48px",
+                fontSize: isMobile ? "34px" : "48px",
               }}
             >
               {orderStats.deliveredOrders}
@@ -273,35 +290,67 @@ const AdminDashboard = () => {
           style={{
             marginTop: "40px",
             background: "white",
-            padding: "25px",
+            padding: isMobile ? "18px" : "25px",
             borderRadius: "15px",
             boxShadow:
               "0 4px 12px rgba(0,0,0,0.08)",
           }}
         >
-          <h2>📊 System Summary</h2>
+          <h2
+            style={{
+              fontSize: isMobile ? "24px" : "32px",
+              textAlign: isMobile ? "center" : "left",
+            }}
+          >
+            📊 System Summary
+          </h2>
 
-          <p>
+          <p
+            style={{
+              fontSize: isMobile ? "15px" : "17px",
+              lineHeight: "1.8",
+            }}
+          >
             👥 Registered Users:
             <strong> {users.length}</strong>
           </p>
 
-          <p>
+          <p
+            style={{
+              fontSize: isMobile ? "15px" : "17px",
+              lineHeight: "1.8",
+            }}
+          >
             🛒 Listed Products:
             <strong> {products.length}</strong>
           </p>
 
-          <p>
+          <p
+            style={{
+              fontSize: isMobile ? "15px" : "17px",
+              lineHeight: "1.8",
+            }}
+          >
             👨‍🌾 Community Posts:
             <strong> {posts.length}</strong>
           </p>
 
-          <p>
+          <p
+            style={{
+              fontSize: isMobile ? "15px" : "17px",
+              lineHeight: "1.8",
+            }}
+          >
             📦 Total Orders:
             <strong> {orderStats.totalOrders}</strong>
           </p>
 
-          <p>
+          <p
+            style={{
+              fontSize: isMobile ? "15px" : "17px",
+              lineHeight: "1.8",
+            }}
+          >
             💰 Total Revenue:
             <strong> ₹{orderStats.revenue}</strong>
           </p>

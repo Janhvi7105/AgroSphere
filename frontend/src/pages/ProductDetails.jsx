@@ -152,7 +152,7 @@ const ProductDetails = () => {
     return (
       <div
         style={{
-          background: "#f4f7fb",
+          background: "#f0f3f0",
           minHeight: "100vh",
         }}
       >
@@ -166,10 +166,26 @@ const ProductDetails = () => {
           }}
         >
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "48px", marginBottom: "10px" }}>⏳</div>
+            <div style={{
+              width: "60px",
+              height: "60px",
+              border: "6px solid #f3f3f3",
+              borderTop: "6px solid #14532d",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+              margin: "0 auto 20px"
+            }}></div>
             <p style={{ color: "#6b7280", fontSize: "18px" }}>Loading product details...</p>
           </div>
         </div>
+        <style>
+          {`
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+          `}
+        </style>
       </div>
     );
   }
@@ -178,7 +194,7 @@ const ProductDetails = () => {
     return (
       <div
         style={{
-          background: "#f4f7fb",
+          background: "#f0f3f0",
           minHeight: "100vh",
         }}
       >
@@ -191,33 +207,40 @@ const ProductDetails = () => {
             minHeight: "60vh",
           }}
         >
-          <div style={{ textAlign: "center" }}>
+          <div style={{
+            textAlign: "center",
+            background: "white",
+            padding: "60px 40px",
+            borderRadius: "20px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+            maxWidth: "500px"
+          }}>
             <div style={{ fontSize: "64px", marginBottom: "15px" }}>🔍</div>
             <h2 style={{ color: "#1f2937", marginBottom: "10px" }}>Product Not Found</h2>
-            <p style={{ color: "#6b7280", fontSize: "16px" }}>
+            <p style={{ color: "#6b7280", fontSize: "16px", marginBottom: "20px" }}>
               The product you're looking for doesn't exist.
             </p>
             <button
               onClick={() => navigate("/marketplace")}
               style={{
-                marginTop: "20px",
-                padding: "12px 30px",
-                background: "#14532d",
+                padding: "14px 40px",
+                background: "linear-gradient(135deg, #14532d, #1a6b1a)",
                 color: "white",
                 border: "none",
-                borderRadius: "10px",
+                borderRadius: "12px",
                 cursor: "pointer",
                 fontWeight: "600",
                 fontSize: "16px",
                 transition: "all 0.3s ease",
+                boxShadow: "0 4px 12px rgba(20, 83, 45, 0.3)"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#0b5d1e";
-                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#14532d";
-                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
               }}
             >
               🛒 Browse Marketplace
@@ -231,7 +254,7 @@ const ProductDetails = () => {
   return (
     <div
       style={{
-        background: "#f4f7fb",
+        background: "#f0f3f0",
         minHeight: "100vh",
       }}
     >
@@ -241,7 +264,7 @@ const ProductDetails = () => {
       {/* Page Content */}
       <div
         style={{
-          maxWidth: "1000px",
+          maxWidth: "1200px",
           margin: "40px auto",
           padding: "0 30px",
         }}
@@ -251,34 +274,40 @@ const ProductDetails = () => {
             background: "#fff",
             padding: "40px",
             borderRadius: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-            border: "1px solid #e5e7eb",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+            border: "1px solid #e8ece8",
           }}
         >
           <div
             style={{
-              marginBottom: "30px",
-              borderBottom: "2px solid #e5e7eb",
-              paddingBottom: "20px",
+              marginBottom: "35px",
+              borderBottom: "2px solid #e8ece8",
+              paddingBottom: "25px",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              flexWrap: "wrap",
+              gap: "15px"
             }}
           >
             <div>
               <h1
                 style={{
-                  fontSize: "36px",
+                  fontSize: "32px",
                   color: "#14532d",
                   marginBottom: "5px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px"
                 }}
               >
-                📦 Product Details
+                <span>📦</span> Product Details
               </h1>
               <p
                 style={{
                   color: "#6b7280",
-                  fontSize: "16px",
+                  fontSize: "15px",
+                  margin: 0
                 }}
               >
                 View complete information about this product.
@@ -287,8 +316,8 @@ const ProductDetails = () => {
             <button
               onClick={() => navigate("/marketplace")}
               style={{
-                padding: "10px 20px",
-                background: "#e5e7eb",
+                padding: "12px 24px",
+                background: "#f3f4f6",
                 color: "#1f2937",
                 border: "none",
                 borderRadius: "10px",
@@ -296,12 +325,17 @@ const ProductDetails = () => {
                 fontWeight: "600",
                 fontSize: "14px",
                 transition: "all 0.3s ease",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#d1d5db";
+                e.currentTarget.style.background = "#e5e7eb";
+                e.currentTarget.style.transform = "translateX(-3px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#e5e7eb";
+                e.currentTarget.style.background = "#f3f4f6";
+                e.currentTarget.style.transform = "translateX(0)";
               }}
             >
               ⬅️ Back to Marketplace
@@ -312,29 +346,34 @@ const ProductDetails = () => {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "30px",
+              gap: "40px",
             }}
           >
             {/* Product Image */}
             <div>
-              <img
-                src={product.image || "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=400&fit=crop"}
-                alt={product.name}
-                style={{
-                  width: "100%",
-                  height: "400px",
-                  objectFit: "cover",
-                  borderRadius: "15px",
-                  border: "1px solid #e5e7eb",
-                }}
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=400&fit=crop";
-                }}
-              />
+              <div style={{
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+                border: "1px solid #e8ece8"
+              }}>
+                <img
+                  src={product.image || "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=600&fit=crop"}
+                  alt={product.name}
+                  style={{
+                    width: "100%",
+                    height: "400px",
+                    objectFit: "cover",
+                  }}
+                  onError={(e) => {
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=600&fit=crop";
+                  }}
+                />
+              </div>
 
               <div
                 style={{
-                  marginTop: "15px",
+                  marginTop: "20px",
                   display: "flex",
                   gap: "10px",
                   flexWrap: "wrap",
@@ -342,28 +381,51 @@ const ProductDetails = () => {
               >
                 <span
                   style={{
-                    padding: "6px 15px",
+                    padding: "8px 18px",
                     background: "#e8f5e9",
                     color: "#14532d",
                     borderRadius: "20px",
                     fontSize: "14px",
                     fontWeight: "600",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
                   }}
                 >
-                  {product.category}
+                  <span>📂</span> {product.category}
                 </span>
                 <span
                   style={{
-                    padding: "6px 15px",
+                    padding: "8px 18px",
                     background: "#fef3c7",
                     color: "#92400e",
                     borderRadius: "20px",
                     fontSize: "14px",
                     fontWeight: "600",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
                   }}
                 >
-                  In Stock
+                  <span>✅</span> In Stock
                 </span>
+                {product.isOrganic && (
+                  <span
+                    style={{
+                      padding: "8px 18px",
+                      background: "#d1fae5",
+                      color: "#065f46",
+                      borderRadius: "20px",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px"
+                    }}
+                  >
+                    <span>🌱</span> Organic
+                  </span>
+                )}
               </div>
             </div>
 
@@ -371,56 +433,72 @@ const ProductDetails = () => {
             <div>
               <h2
                 style={{
-                  fontSize: "32px",
+                  fontSize: "30px",
                   color: "#14532d",
-                  marginBottom: "15px",
+                  marginBottom: "12px",
+                  fontWeight: "700"
                 }}
               >
                 🌾 {product.name}
               </h2>
 
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: "#f59e0b",
-                  marginBottom: "15px",
-                }}
-              >
-                ⭐ {product.averageRating?.toFixed(1) || "0.0"} (
-                {product.numberOfReviews || 0} Reviews)
-              </p>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                marginBottom: "20px"
+              }}>
+                <p
+                  style={{
+                    fontSize: "18px",
+                    color: "#f59e0b",
+                    margin: 0,
+                    fontWeight: "600"
+                  }}
+                >
+                  ⭐ {product.averageRating?.toFixed(1) || "0.0"}
+                </p>
+                <span style={{ color: "#9ca3af" }}>|</span>
+                <p style={{ color: "#6b7280", margin: 0, fontSize: "15px" }}>
+                  {product.numberOfReviews || 0} Reviews
+                </p>
+              </div>
 
               <div
                 style={{
                   marginBottom: "25px",
                   padding: "20px",
-                  background: "#f9fafb",
-                  borderRadius: "12px",
-                  border: "1px solid #e5e7eb",
+                  background: "linear-gradient(135deg, #f9fafb, #f3f4f6)",
+                  borderRadius: "14px",
+                  border: "1px solid #e8ece8",
                 }}
               >
                 <div
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    gap: "15px",
+                    gap: "20px",
                   }}
                 >
                   <div>
                     <p
                       style={{
                         color: "#6b7280",
-                        fontSize: "14px",
-                        marginBottom: "2px",
+                        fontSize: "13px",
+                        marginBottom: "4px",
+                        fontWeight: "500",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px"
                       }}
                     >
-                      Price
+                      💰 Price
                     </p>
                     <h3
                       style={{
                         color: "#14532d",
                         margin: 0,
-                        fontSize: "28px",
+                        fontSize: "30px",
+                        fontWeight: "700"
                       }}
                     >
                       ₹{product.price}
@@ -431,17 +509,21 @@ const ProductDetails = () => {
                     <p
                       style={{
                         color: "#6b7280",
-                        fontSize: "14px",
-                        marginBottom: "2px",
+                        fontSize: "13px",
+                        marginBottom: "4px",
+                        fontWeight: "500",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px"
                       }}
                     >
-                      Quantity Available
+                      📦 Available Stock
                     </p>
                     <h3
                       style={{
                         color: "#14532d",
                         margin: 0,
-                        fontSize: "28px",
+                        fontSize: "30px",
+                        fontWeight: "700"
                       }}
                     >
                       {product.quantity} {product.unit || "kg"}
@@ -455,20 +537,29 @@ const ProductDetails = () => {
                   style={{
                     color: "#14532d",
                     marginBottom: "10px",
-                    fontSize: "18px",
+                    fontSize: "17px",
+                    fontWeight: "600"
                   }}
                 >
                   📝 Description
                 </h4>
-                <p
-                  style={{
-                    color: "#4b5563",
-                    lineHeight: "1.8",
-                    fontSize: "16px",
-                  }}
-                >
-                  {product.description || "No description available for this product."}
-                </p>
+                <div style={{
+                  background: "#f9fafb",
+                  padding: "16px",
+                  borderRadius: "10px",
+                  border: "1px solid #e8ece8"
+                }}>
+                  <p
+                    style={{
+                      color: "#4b5563",
+                      lineHeight: "1.8",
+                      fontSize: "15px",
+                      margin: 0
+                    }}
+                  >
+                    {product.description || "No description available for this product."}
+                  </p>
+                </div>
               </div>
 
               {/* Quantity Selector */}
@@ -476,18 +567,19 @@ const ProductDetails = () => {
                 <h3
                   style={{
                     color: "#14532d",
-                    marginBottom: "10px",
-                    fontSize: "18px",
+                    marginBottom: "12px",
+                    fontSize: "17px",
+                    fontWeight: "600"
                   }}
                 >
-                  Quantity
+                  📊 Select Quantity
                 </h3>
 
                 <div
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "15px",
+                    gap: "20px",
                     marginBottom: "10px",
                   }}
                 >
@@ -497,33 +589,47 @@ const ProductDetails = () => {
                     }
                     disabled={product.quantity === 0}
                     style={{
-                      padding: "10px 20px",
-                      background: product.quantity === 0 ? "#d1d5db" : "#e5e7eb",
+                      padding: "12px 24px",
+                      background: product.quantity === 0 ? "#e5e7eb" : "#14532d",
+                      color: "white",
                       border: "none",
-                      borderRadius: "8px",
-                      fontSize: "20px",
+                      borderRadius: "10px",
+                      fontSize: "22px",
                       fontWeight: "bold",
                       cursor: product.quantity === 0 ? "not-allowed" : "pointer",
                       transition: "all 0.3s ease",
                       opacity: product.quantity === 0 ? 0.5 : 1,
+                      minWidth: "60px"
                     }}
                     onMouseEnter={(e) => {
                       if (product.quantity > 0) {
-                        e.currentTarget.style.background = "#d1d5db";
+                        e.currentTarget.style.background = "#0b5d1e";
+                        e.currentTarget.style.transform = "scale(1.05)";
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (product.quantity > 0) {
-                        e.currentTarget.style.background = "#e5e7eb";
+                        e.currentTarget.style.background = "#14532d";
+                        e.currentTarget.style.transform = "scale(1)";
                       }
                     }}
                   >
-                    -
+                    −
                   </button>
 
-                  <h3 style={{ margin: 0, fontSize: "24px" }}>
-                    {quantity} kg
-                  </h3>
+                  <div style={{
+                    background: "#f9fafb",
+                    padding: "8px 20px",
+                    borderRadius: "10px",
+                    border: "2px solid #e8ece8",
+                    minWidth: "80px",
+                    textAlign: "center"
+                  }}>
+                    <h3 style={{ margin: 0, fontSize: "26px", color: "#14532d" }}>
+                      {quantity}
+                    </h3>
+                    <span style={{ fontSize: "12px", color: "#6b7280" }}>kg</span>
+                  </div>
 
                   <button
                     onClick={() =>
@@ -532,24 +638,28 @@ const ProductDetails = () => {
                     }
                     disabled={product.quantity === 0}
                     style={{
-                      padding: "10px 20px",
-                      background: product.quantity === 0 ? "#d1d5db" : "#e5e7eb",
+                      padding: "12px 24px",
+                      background: product.quantity === 0 ? "#e5e7eb" : "#14532d",
+                      color: "white",
                       border: "none",
-                      borderRadius: "8px",
-                      fontSize: "20px",
+                      borderRadius: "10px",
+                      fontSize: "22px",
                       fontWeight: "bold",
                       cursor: product.quantity === 0 ? "not-allowed" : "pointer",
                       transition: "all 0.3s ease",
                       opacity: product.quantity === 0 ? 0.5 : 1,
+                      minWidth: "60px"
                     }}
                     onMouseEnter={(e) => {
                       if (product.quantity > 0) {
-                        e.currentTarget.style.background = "#d1d5db";
+                        e.currentTarget.style.background = "#0b5d1e";
+                        e.currentTarget.style.transform = "scale(1.05)";
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (product.quantity > 0) {
-                        e.currentTarget.style.background = "#e5e7eb";
+                        e.currentTarget.style.background = "#14532d";
+                        e.currentTarget.style.transform = "scale(1)";
                       }
                     }}
                   >
@@ -557,7 +667,7 @@ const ProductDetails = () => {
                   </button>
                 </div>
 
-                <p style={{ color: "#6b7280", fontSize: "14px" }}>
+                <p style={{ color: "#6b7280", fontSize: "14px", margin: 0 }}>
                   <b>Available Stock:</b> {product.quantity} kg
                 </p>
               </div>
@@ -566,21 +676,38 @@ const ProductDetails = () => {
               <div
                 style={{
                   marginBottom: "20px",
-                  padding: "15px",
-                  background: "#f0fdf4",
-                  borderRadius: "10px",
+                  padding: "18px 20px",
+                  background: "linear-gradient(135deg, #f0fdf4, #dcfce7)",
+                  borderRadius: "12px",
                   border: "2px solid #14532d",
                 }}
               >
-                <h3
-                  style={{
-                    color: "#14532d",
-                    margin: 0,
-                    fontSize: "22px",
-                  }}
-                >
-                  Total Price: ₹{product.price * quantity}
-                </h3>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}>
+                  <h3
+                    style={{
+                      color: "#14532d",
+                      margin: 0,
+                      fontSize: "18px",
+                      fontWeight: "600"
+                    }}
+                  >
+                    💳 Total Price
+                  </h3>
+                  <h3
+                    style={{
+                      color: "#14532d",
+                      margin: 0,
+                      fontSize: "28px",
+                      fontWeight: "700"
+                    }}
+                  >
+                    ₹{product.price * quantity}
+                  </h3>
+                </div>
               </div>
 
               {/* Delivery Address */}
@@ -590,12 +717,16 @@ const ProductDetails = () => {
                     color: "#14532d",
                     marginBottom: "10px",
                     fontSize: "16px",
+                    fontWeight: "600",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
                   }}
                 >
-                  📍 Delivery Address
+                  <span>📍</span> Delivery Address
                 </h4>
                 <textarea
-                  placeholder="Enter Delivery Address"
+                  placeholder="Enter your complete delivery address..."
                   value={deliveryAddress}
                   onChange={(e) =>
                     setDeliveryAddress(e.target.value)
@@ -603,15 +734,27 @@ const ProductDetails = () => {
                   disabled={product.quantity === 0}
                   style={{
                     width: "100%",
-                    padding: "12px",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "8px",
-                    fontSize: "16px",
+                    padding: "14px",
+                    border: "2px solid #e8ece8",
+                    borderRadius: "12px",
+                    fontSize: "15px",
                     minHeight: "80px",
                     resize: "vertical",
                     fontFamily: "inherit",
                     opacity: product.quantity === 0 ? 0.5 : 1,
                     cursor: product.quantity === 0 ? "not-allowed" : "text",
+                    transition: "all 0.3s ease",
+                    background: product.quantity === 0 ? "#f9fafb" : "white"
+                  }}
+                  onFocus={(e) => {
+                    if (product.quantity > 0) {
+                      e.currentTarget.style.borderColor = "#14532d";
+                      e.currentTarget.style.boxShadow = "0 0 0 4px rgba(20, 83, 45, 0.1)";
+                    }
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#e8ece8";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 />
               </div>
@@ -628,15 +771,19 @@ const ProductDetails = () => {
                     disabled
                     style={{
                       flex: 1,
-                      padding: "16px",
-                      background: "#d1d5db",
+                      padding: "18px",
+                      background: "#e5e7eb",
                       color: "#6b7280",
                       border: "none",
-                      borderRadius: "10px",
+                      borderRadius: "12px",
                       cursor: "not-allowed",
                       fontWeight: "600",
                       fontSize: "18px",
                       transition: "all 0.3s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px"
                     }}
                   >
                     🚫 Out of Stock
@@ -646,23 +793,28 @@ const ProductDetails = () => {
                     onClick={handleBuyNow}
                     style={{
                       flex: 1,
-                      padding: "16px",
-                      background: "#14532d",
+                      padding: "18px",
+                      background: "linear-gradient(135deg, #14532d, #1a6b1a)",
                       color: "white",
                       border: "none",
-                      borderRadius: "10px",
+                      borderRadius: "12px",
                       cursor: "pointer",
                       fontWeight: "600",
                       fontSize: "18px",
                       transition: "all 0.3s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "10px",
+                      boxShadow: "0 4px 12px rgba(20, 83, 45, 0.3)"
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#0b5d1e";
-                      e.currentTarget.style.transform = "scale(1.02)";
+                      e.currentTarget.style.transform = "translateY(-3px)";
+                      e.currentTarget.style.boxShadow = "0 6px 20px rgba(20, 83, 45, 0.4)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#14532d";
-                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(20, 83, 45, 0.3)";
                     }}
                   >
                     🛒 Buy Now
@@ -672,21 +824,26 @@ const ProductDetails = () => {
                 <button
                   onClick={() => navigate("/marketplace")}
                   style={{
-                    padding: "16px 30px",
-                    background: "#e5e7eb",
+                    padding: "18px 32px",
+                    background: "#f3f4f6",
                     color: "#1f2937",
                     border: "none",
-                    borderRadius: "10px",
+                    borderRadius: "12px",
                     cursor: "pointer",
                     fontWeight: "600",
                     fontSize: "16px",
                     transition: "all 0.3s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#d1d5db";
+                    e.currentTarget.style.background = "#e5e7eb";
+                    e.currentTarget.style.transform = "scale(1.02)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#e5e7eb";
+                    e.currentTarget.style.background = "#f3f4f6";
+                    e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
                   🔍 View More
@@ -698,39 +855,115 @@ const ProductDetails = () => {
           {/* Customer Reviews Section */}
           <div
             style={{
-              marginTop: "40px",
+              marginTop: "50px",
               background: "#fff",
-              padding: "30px",
-              borderRadius: "15px",
-              border: "1px solid #e5e7eb",
+              padding: "35px",
+              borderRadius: "16px",
+              border: "1px solid #e8ece8",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.04)"
             }}
           >
-            <h2 style={{ color: "#14532d", marginBottom: "20px" }}>
-              ⭐ Customer Reviews
+            <h2 style={{
+              color: "#14532d",
+              marginBottom: "25px",
+              fontSize: "26px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px"
+            }}>
+              <span>⭐</span> Customer Reviews
+              <span style={{
+                fontSize: "16px",
+                background: "#f3f4f6",
+                color: "#6b7280",
+                padding: "2px 12px",
+                borderRadius: "20px",
+                fontWeight: "500"
+              }}>
+                {reviews.length}
+              </span>
             </h2>
 
             {reviews.length === 0 ? (
-              <p style={{ color: "#6b7280" }}>No Reviews Yet</p>
+              <div style={{
+                textAlign: "center",
+                padding: "40px 20px",
+                background: "#f9fafb",
+                borderRadius: "12px"
+              }}>
+                <span style={{ fontSize: "48px", display: "block", marginBottom: "10px" }}>📝</span>
+                <p style={{ color: "#6b7280", fontSize: "16px", margin: 0 }}>
+                  No reviews yet. Be the first to review this product!
+                </p>
+              </div>
             ) : (
-              reviews.map((review) => (
-                <div
-                  key={review._id}
-                  style={{
-                    borderBottom: "1px solid #ddd",
-                    padding: "20px 0",
-                  }}
-                >
-                  <h4 style={{ color: "#14532d", marginBottom: "5px" }}>
-                    {review.userId?.name || "Anonymous"}
-                  </h4>
+              <div style={{
+                display: "grid",
+                gap: "16px"
+              }}>
+                {reviews.map((review) => (
+                  <div
+                    key={review._id}
+                    style={{
+                      border: "1px solid #e8ece8",
+                      borderRadius: "12px",
+                      padding: "20px",
+                      background: "#fafbfc",
+                      transition: "all 0.3s ease"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#f8f9fa";
+                      e.currentTarget.style.borderColor = "#14532d";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "#fafbfc";
+                      e.currentTarget.style.borderColor = "#e8ece8";
+                    }}
+                  >
+                    <div style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      marginBottom: "8px"
+                    }}>
+                      <h4 style={{
+                        color: "#14532d",
+                        margin: 0,
+                        fontSize: "16px",
+                        fontWeight: "600"
+                      }}>
+                        {review.userId?.name || "Anonymous"}
+                      </h4>
+                      <span style={{
+                        fontSize: "18px",
+                        color: "#f59e0b"
+                      }}>
+                        {"⭐".repeat(review.rating)}
+                      </span>
+                    </div>
 
-                  <p style={{ color: "#f59e0b", marginBottom: "5px" }}>
-                    {"⭐".repeat(review.rating)}
-                  </p>
-
-                  <p style={{ color: "#4b5563" }}>{review.comment}</p>
-                </div>
-              ))
+                    <p style={{
+                      color: "#4b5563",
+                      margin: "8px 0 0 0",
+                      fontSize: "15px",
+                      lineHeight: "1.6"
+                    }}>
+                      {review.comment}
+                    </p>
+                    <div style={{
+                      marginTop: "8px",
+                      fontSize: "12px",
+                      color: "#9ca3af"
+                    }}>
+                      {new Date(review.createdAt).toLocaleDateString('en-IN', {
+                        day: '2-digit',
+                        month: 'short',
+                        year: 'numeric'
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>

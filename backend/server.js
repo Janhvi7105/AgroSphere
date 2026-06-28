@@ -23,6 +23,7 @@ import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 
 // Product Reviews
 import reviewRoutes from "./routes/reviewRoutes.js";
+import adminReviewRoutes from "./routes/adminReviewRoutes.js";
 
 // Connect Database
 connectDB();
@@ -91,6 +92,12 @@ app.use(
 app.use(
   "/api/reviews",
   reviewRoutes
+);
+
+// Admin Reviews
+app.use(
+  "/api/admin/reviews",
+  adminReviewRoutes
 );
 
 // =========================
