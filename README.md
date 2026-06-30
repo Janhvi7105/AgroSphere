@@ -66,24 +66,59 @@ AgroSphere addresses these challenges by providing one unified platform where fa
 
 ---
 
-# ⭐ Key Features Preview
+# 📸 Application Preview
 
-| Home | Marketplace |
-|------|-------------|
+# 📸 Application Preview
 
-| Crop Guide | Weather Updates |
-|------------|-----------------|
-
-| AI Assistant | Community |
-|-------------|------------|
-
-| Farmer Dashboard | Admin Dashboard |
-|------------------|----------------|
-
-| Orders | Product Approval |
-|--------|------------------|
+Below are screenshots showcasing the major features of AgroSphere.
 
 ---
+
+## 🏠 Home Page
+
+![Home Page](screenshots/home.png)
+
+---
+
+## 👨‍🌾 Farmer Dashboard
+
+![Farmer Dashboard](screenshots/farmer-dashboard.png)
+
+---
+
+## 🛒 Marketplace
+
+![Marketplace](screenshots/marketplace.png)
+
+---
+
+## 🌾 Crop Guide
+
+![Crop Guide](screenshots/crop-guide.png)
+
+---
+
+## 🌦 Weather Updates
+
+![Weather Updates](screenshots/weather.png)
+
+---
+
+## 👥 Community Feed
+
+![Community Feed](screenshots/community.png)
+
+---
+
+## 🤖 AI Assistant
+
+![AI Assistant](screenshots/ai-assistant.png)
+
+---
+
+## 👨‍💼 Admin Dashboard
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
 
 # ✨ Features
 
