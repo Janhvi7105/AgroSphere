@@ -37,6 +37,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "https://agro-sphere-egok.vercel.app",
     ],
     credentials: true,
   })
