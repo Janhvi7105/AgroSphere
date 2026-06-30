@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import axios from "axios";
+import API from "../api";
 import { useNavigate } from "react-router-dom";
 import FarmerNavbar from "../components/FarmerNavbar";
 
@@ -15,8 +15,8 @@ const Marketplace = () => {
   const fetchProducts = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        "http://localhost:5000/api/products",
+      const { data } = await API.get(
+        "/api/products",
         {
           params: {
             search,

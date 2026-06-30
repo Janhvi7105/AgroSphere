@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import FarmerNavbar from "../components/FarmerNavbar";
 
 const MyPurchases = () => {
@@ -17,8 +17,8 @@ const MyPurchases = () => {
       setLoading(true);
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(
-        "http://localhost:5000/api/orders/my-orders",
+      const { data } = await API.get(
+        "/api/orders/my-orders",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -38,8 +38,8 @@ const MyPurchases = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.post(
-        "http://localhost:5000/api/reviews",
+      await API.post(
+        "/api/reviews",
         {
           productId,
           rating,

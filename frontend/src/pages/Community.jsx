@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import API from "../api";
 import FarmerNavbar from "../components/FarmerNavbar";
 
 const Community = () => {
@@ -11,8 +11,8 @@ const Community = () => {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        "http://localhost:5000/api/posts"
+      const { data } = await API.get(
+        "/api/posts"
       );
 
       console.log("POSTS RECEIVED:", data);
@@ -41,8 +41,8 @@ const Community = () => {
       setSubmitting(true);
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/posts",
+      const { data } = await API.post(
+        "/api/posts",
         {
           content,
           imageUrl: "",

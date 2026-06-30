@@ -2,7 +2,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import axios from "axios";
+import API from "../api";
 import FarmerNavbar from "../components/FarmerNavbar";
 
 const MyOrders = () => {
@@ -18,8 +18,8 @@ const MyOrders = () => {
         localStorage.getItem("token");
 
       const { data } =
-        await axios.get(
-          "http://localhost:5000/api/orders/seller-orders",
+        await API.get(
+          "/api/orders/seller-orders",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -41,8 +41,8 @@ const MyOrders = () => {
       const token =
         localStorage.getItem("token");
 
-      await axios.put(
-        `http://localhost:5000/api/orders/${id}`,
+      await API.put(
+        `/api/orders/${id}`,
         {
           orderStatus: status,
         },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FarmerNavbar from "../components/FarmerNavbar";
-import axios from "axios";
+import API from "../api";
 
 const GovtSchemes = () => {
   const [expandedScheme, setExpandedScheme] = useState(null);
@@ -16,8 +16,8 @@ const GovtSchemes = () => {
   const fetchSchemes = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        "http://localhost:5000/api/schemes"
+      const { data } = await API.get(
+        "/api/schemes"
       );
       setSchemes(data.schemes);
     } catch (error) {

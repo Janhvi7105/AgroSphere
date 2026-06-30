@@ -2,7 +2,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const AdminProducts = () => {
@@ -11,8 +11,8 @@ const AdminProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/admin/products"
+      const { data } = await API.get(
+        "/api/admin/products"
       );
 
       setProducts(data);
@@ -29,8 +29,8 @@ const AdminProducts = () => {
 
       if (!confirmDelete) return;
 
-      await axios.delete(
-        `http://localhost:5000/api/admin/products/${id}`
+      await API.delete(
+        `/api/admin/products/${id}`
       );
 
       alert(

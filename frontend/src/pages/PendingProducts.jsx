@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const PendingProducts = () => {
@@ -10,8 +10,8 @@ const PendingProducts = () => {
 
   const fetchPendingProducts = useCallback(async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/products/pending",
+      const { data } = await API.get(
+        "/api/products/pending",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -36,8 +36,8 @@ const PendingProducts = () => {
 
   const approveProduct = async (id) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/products/${id}/approve`,
+      await API.put(
+        `/api/products/${id}/approve`,
         {},
         {
           headers: {
@@ -57,8 +57,8 @@ const PendingProducts = () => {
 
   const rejectProduct = async (id) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/products/${id}/reject`,
+      await API.put(
+        `/api/products/${id}/reject`,
         {},
         {
           headers: {

@@ -2,7 +2,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const AdminPosts = () => {
@@ -10,8 +10,8 @@ const AdminPosts = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/admin/posts"
+      const { data } = await API.get(
+        "/api/admin/posts"
       );
 
       setPosts(data);
@@ -28,8 +28,8 @@ const AdminPosts = () => {
 
       if (!confirmDelete) return;
 
-      await axios.delete(
-        `http://localhost:5000/api/admin/posts/${id}`
+      await API.delete(
+        `/api/admin/posts/${id}`
       );
 
       alert("Post Deleted Successfully");

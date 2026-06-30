@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import axios from "axios";
+import API from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
@@ -16,8 +16,8 @@ const EditProduct = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(
-        "http://localhost:5000/api/products/my-products",
+      const { data } = await API.get(
+        "/api/products/my-products",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,8 +51,8 @@ const EditProduct = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.put(
-        `http://localhost:5000/api/products/${id}`,
+      const { data } = await API.put(
+        `/api/products/${id}`,
         product,
         {
           headers: {

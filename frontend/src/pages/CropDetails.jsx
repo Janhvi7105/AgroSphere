@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api";
 import FarmerNavbar from "../components/FarmerNavbar";
 
 const CropDetails = () => {
@@ -32,8 +32,8 @@ const CropDetails = () => {
         return;
       }
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/payment/create-order",
+      const { data } = await API.post(
+        "/api/payment/create-order",
         {
           amount: seed.price,
         }
@@ -49,8 +49,8 @@ const CropDetails = () => {
         handler: async function (response) {
           alert("✅ Payment Successful");
 
-          await axios.post(
-            "http://localhost:5000/api/orders",
+          await API.post(
+            "/api/orders",
             {
               productName: seed.name,
               price: seed.price,

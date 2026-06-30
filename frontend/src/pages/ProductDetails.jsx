@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import FarmerNavbar from "../components/FarmerNavbar";
 
@@ -16,8 +16,8 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(
-          "http://localhost:5000/api/products"
+        const { data } = await API.get(
+          "/api/products"
         );
 
         const selectedProduct = data.find(
@@ -34,8 +34,8 @@ const ProductDetails = () => {
 
     const fetchReviews = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/api/reviews/${id}`
+        const { data } = await API.get(
+          `/api/reviews/${id}`
         );
 
         setReviews(data.reviews);
@@ -59,8 +59,8 @@ const ProductDetails = () => {
       const token = localStorage.getItem("token");
 
       // Step 1: Create Razorpay Order
-      const { data } = await axios.post(
-        "http://localhost:5000/api/payment/create-order",
+      const { data } = await API.post(
+        "/api/payment/create-order",
         {
           amount: product.price * quantity,
         },
@@ -84,8 +84,8 @@ const ProductDetails = () => {
         handler: async function (response) {
           try {
             // Step 3: Verify Payment
-            await axios.post(
-              "http://localhost:5000/api/payment/verify",
+            await API.post(
+              "/api/payment/verify",
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
@@ -94,8 +94,8 @@ const ProductDetails = () => {
             );
 
             // Step 4: Create Order after successful payment
-            await axios.post(
-              "http://localhost:5000/api/orders",
+            await API.post(
+              "/api/orders",
               {
                 productId: product._id,
                 quantity,

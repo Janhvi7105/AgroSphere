@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "../api";
 
 const VoiceAssistant = () => {
   const [text, setText] = useState("");
@@ -26,8 +26,8 @@ const VoiceAssistant = () => {
     try {
       setLoading(true);
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/ai/chat",
+      const { data } = await API.post(
+        "/api/ai/chat",
         {
           question,
         }

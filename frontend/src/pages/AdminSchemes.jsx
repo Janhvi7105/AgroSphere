@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import FarmerNavbar from "../components/AdminNavbar"; // Change if your admin navbar file name is different
 
 const AdminSchemes = () => {
@@ -19,8 +19,8 @@ const AdminSchemes = () => {
 
   const fetchSchemes = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/schemes"
+      const { data } = await API.get(
+        "/api/schemes"
       );
 
       setSchemes(data.schemes);
@@ -44,8 +44,8 @@ const AdminSchemes = () => {
     e.preventDefault();
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/schemes",
+      await API.post(
+        "/api/schemes",
         formData,
         {
           headers: {
@@ -76,8 +76,8 @@ const AdminSchemes = () => {
     if (!window.confirm("Delete Scheme?")) return;
 
     try {
-      await axios.delete(
-        `http://localhost:5000/api/schemes/${id}`,
+      await API.delete(
+        `/api/schemes/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

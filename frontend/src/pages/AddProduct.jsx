@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "../api";
 import { useNavigate } from "react-router-dom";
 import FarmerNavbar from "../components/FarmerNavbar";
 
@@ -30,8 +30,8 @@ const AddProduct = () => {
       const token =
         localStorage.getItem("token");
 
-      await axios.post(
-        "http://localhost:5000/api/products",
+      await API.post(
+        "/api/products",
         formData,
         {
           headers: {

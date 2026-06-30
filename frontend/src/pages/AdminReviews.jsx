@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const AdminReviews = () => {
@@ -13,8 +13,8 @@ const AdminReviews = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(
-        "http://localhost:5000/api/admin/reviews",
+      const { data } = await API.get(
+        "/api/admin/reviews",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -38,8 +38,8 @@ const AdminReviews = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(
-        `http://localhost:5000/api/admin/reviews/${id}`,
+      await API.delete(
+        `/api/admin/reviews/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

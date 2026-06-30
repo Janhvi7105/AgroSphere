@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const AdminCropGuide = () => {
@@ -30,8 +30,8 @@ const AdminCropGuide = () => {
   const fetchCrops = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/crops"
+      const { data } = await API.get(
+        "/api/crops"
       );
       setCrops(data.crops);
     } catch (error) {
@@ -103,16 +103,16 @@ const AdminCropGuide = () => {
 
       if (isEditing) {
         // Update crop
-        await axios.put(
-          `http://localhost:5000/api/crops/${currentCropId}`,
+        await API.put(
+          `/api/crops/${currentCropId}`,
           cropData,
           config
         );
         alert("Crop updated successfully!");
       } else {
         // Add new crop
-        await axios.post(
-          "http://localhost:5000/api/crops",
+        await API.post(
+          "/api/crops",
           cropData,
           config
         );
@@ -161,8 +161,8 @@ const AdminCropGuide = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(
-        `http://localhost:5000/api/crops/${id}`,
+      await API.delete(
+        `/api/crops/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

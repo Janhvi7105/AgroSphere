@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import { useNavigate } from "react-router-dom";
 import AdminNavbar from "../components/AdminNavbar";
 
@@ -30,16 +30,16 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const usersRes = await axios.get(
-        "http://localhost:5000/api/admin/users"
+      const usersRes = await API.get(
+        "/api/admin/users"
       );
 
-      const productsRes = await axios.get(
-        "http://localhost:5000/api/admin/products"
+      const productsRes = await API.get(
+        "/api/admin/products"
       );
 
-      const postsRes = await axios.get(
-        "http://localhost:5000/api/admin/posts"
+      const postsRes = await API.get(
+        "/api/admin/posts"
       );
 
       setUsers(usersRes.data);
@@ -52,8 +52,8 @@ const AdminDashboard = () => {
 
   const fetchOrderStats = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/admin/orders/stats"
+      const { data } = await API.get(
+        "/api/admin/orders/stats"
       );
 
       setOrderStats(data);

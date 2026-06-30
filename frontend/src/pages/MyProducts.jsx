@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import { useNavigate } from "react-router-dom";
 
 const MyProducts = () => {
@@ -10,8 +10,8 @@ const MyProducts = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(
-        "http://localhost:5000/api/products/my-products",
+      const { data } = await API.get(
+        "/api/products/my-products",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -30,8 +30,8 @@ const MyProducts = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.delete(
-        `http://localhost:5000/api/products/${id}`,
+      const { data } = await API.delete(
+        `/api/products/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

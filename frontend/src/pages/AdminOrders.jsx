@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const AdminOrders = () => {
@@ -11,8 +11,8 @@ const AdminOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/admin/orders"
+      const { data } = await API.get(
+        "/api/admin/orders"
       );
 
       setOrders(data);

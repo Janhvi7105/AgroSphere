@@ -2,7 +2,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import axios from "axios";
+import API from "../api";
 import AdminNavbar from "../components/AdminNavbar";
 
 const AdminUsers = () => {
@@ -10,8 +10,8 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/admin/users"
+      const { data } = await API.get(
+        "/api/admin/users"
       );
 
       setUsers(data);
@@ -28,8 +28,8 @@ const AdminUsers = () => {
 
       if (!confirmDelete) return;
 
-      await axios.delete(
-        `http://localhost:5000/api/admin/users/${id}`
+      await API.delete(
+        `/api/admin/users/${id}`
       );
 
       alert("User Deleted Successfully");

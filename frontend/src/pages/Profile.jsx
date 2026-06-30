@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import API from "../api";
 import FarmerNavbar from "../components/FarmerNavbar";
 
 const Profile = () => {
@@ -19,8 +19,8 @@ const Profile = () => {
   const fetchUserProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.get(
-        "http://localhost:5000/api/users/profile",
+      const { data } = await API.get(
+        "/api/users/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,8 +51,8 @@ const Profile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.put(
-        "http://localhost:5000/api/users/profile",
+      const { data } = await API.put(
+        "/api/users/profile",
         editData,
         {
           headers: {

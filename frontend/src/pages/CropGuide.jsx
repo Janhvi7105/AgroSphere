@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FarmerNavbar from "../components/FarmerNavbar";
-import axios from "axios";
+import API from "../api";
 
 const CropGuide = () => {
   const [crops, setCrops] = useState([]);
@@ -16,8 +16,8 @@ const CropGuide = () => {
   const fetchCrops = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        "http://localhost:5000/api/crops"
+      const { data } = await API.get(
+        "/api/crops"
       );
       setCrops(data.crops);
     } catch (error) {
